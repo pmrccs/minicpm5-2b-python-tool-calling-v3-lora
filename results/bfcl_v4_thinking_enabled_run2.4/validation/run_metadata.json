@@ -1,0 +1,187 @@
+{
+  "attempt_token_ids_saved": true,
+  "base_model": "openbmb/MiniCPM5-2B",
+  "batch_size_pilot_enabled": true,
+  "bfcl_commit": "f7cf7359b7ac615a0b294831c5ba2bc95ee4a000",
+  "bfcl_repo": "https://github.com/ShishirPatil/gorilla",
+  "cache_enabled": true,
+  "checkpoint_policy": "immutable JSONL shards around every 100 completed attempts; final remainder committed at each stage boundary",
+  "created_or_resumed_utc": "2026-10-11T10:50:24.299058+00:00",
+  "do_sample": false,
+  "enable_thinking": true,
+  "generation_dtype": "torch.float16",
+  "github_branch": "main",
+  "github_commit_every_records": 100,
+  "github_repo": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
+  "github_run_path": "results/bfcl_v4_thinking_enabled_run2.4/validation",
+  "gpu_devices": [
+    "cuda:0",
+    "cuda:1"
+  ],
+  "hardware_and_runtime": {
+    "cuda_runtime": "12.8",
+    "gpus": [
+      {
+        "index": 0,
+        "major": 7,
+        "minor": 5,
+        "name": "Tesla T4",
+        "total_memory_bytes": 15636037632
+      },
+      {
+        "index": 1,
+        "major": 7,
+        "minor": 5,
+        "name": "Tesla T4",
+        "total_memory_bytes": 15636037632
+      }
+    ],
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "torch": "2.11.0+cu128"
+  },
+  "lora_adapter": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
+  "output_folder_name": "bfcl_v4_thinking_enabled_run2.4",
+  "package_versions": {
+    "accelerate": "1.10.1",
+    "huggingface_hub": "0.36.2",
+    "peft": "0.21.0",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.22.2",
+    "transformers": "4.57.6"
+  },
+  "pilot_batch_sizes": [
+    1,
+    2,
+    4,
+    8,
+    12
+  ],
+  "pilot_max_new_tokens": 128,
+  "pilot_metrics": null,
+  "prompt_integrity_summary": {
+    "irrelevance": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_irrelevance": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_multiple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "3c0dff45598c88b12eda10a145b80580c967e86ee23de36cb8a86a957774ac35": 1,
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 2
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_parallel": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_parallel_multiple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_relevance": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_simple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "multiple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "parallel": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "parallel_multiple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "simple_java": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "simple_javascript": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "simple_python": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a9b1935148f208a0325507e3bc2a4cc9ba507aeb9baa125f56b1c8eae18fb3ef": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    }
+  },
+  "records_recovered_from_local_journal": 0,
+  "records_recovered_from_remote": 0,
+  "remote_checkpoint_files_found": 0,
+  "requested_batch_size_per_gpu": 8,
+  "resume_policy": "merge private GitHub shards and local journal; deduplicate by (sample ID, effective token cap)",
+  "retry_policy": "512 -> 1024 only for hit_token_limit; 1024 -> 2048 only for hit_token_limit at 1024",
+  "run_mode_name": "validation",
+  "run_signature": "de2fa00570ba83060192ac551d81fcbfea2868271243a9b7e2ba38381b6f7b58",
+  "samples_per_category_test": 3,
+  "selected_batch_size_per_gpu": null,
+  "selected_category_counts": {
+    "irrelevance": 3,
+    "live_irrelevance": 3,
+    "live_multiple": 3,
+    "live_parallel": 3,
+    "live_parallel_multiple": 3,
+    "live_relevance": 3,
+    "live_simple": 3,
+    "multiple": 3,
+    "parallel": 3,
+    "parallel_multiple": 3,
+    "simple_java": 3,
+    "simple_javascript": 3,
+    "simple_python": 3
+  },
+  "selected_samples": 39,
+  "test_run_mode": true,
+  "token_limit_stages": [
+    512,
+    1024,
+    2048
+  ]
+}
