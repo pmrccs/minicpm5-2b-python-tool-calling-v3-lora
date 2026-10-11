@@ -1,0 +1,161 @@
+{
+  "attempt_record_count": 0,
+  "checkpoint_records_per_commit_target": 100,
+  "last_checkpoint_utc": null,
+  "pilot_metrics": null,
+  "prompt_integrity_summary": {
+    "irrelevance": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_irrelevance": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_multiple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "209fb6db2d9ac07ef24e8ba2d9c546509a1c75fb7efb39a76eeea4282c3549df": 1,
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 2
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_parallel": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_parallel_multiple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_relevance": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "live_simple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "multiple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "parallel": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "parallel_multiple": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "simple_java": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "simple_javascript": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    },
+    "simple_python": {
+      "samples": 3,
+      "system_prompt_hash_counts": {
+        "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57": 3
+      },
+      "unique_rendered_prompt_hashes": 3
+    }
+  },
+  "run_config": {
+    "base_model": "openbmb/MiniCPM5-2B",
+    "batch_size_pilot_enabled": true,
+    "bfcl_commit": "f7cf7359b7ac615a0b294831c5ba2bc95ee4a000",
+    "bfcl_repo": "https://github.com/ShishirPatil/gorilla",
+    "do_sample": false,
+    "enable_thinking": true,
+    "github_branch": "main",
+    "github_commit_every_records": 100,
+    "github_repo": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
+    "github_run_path": "results/bfcl_v4_thinking_enabled_run2.1/validation",
+    "gpu_devices": [
+      "cuda:0",
+      "cuda:1"
+    ],
+    "lora_adapter": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
+    "output_folder_name": "bfcl_v4_thinking_enabled_run2.1",
+    "pilot_batch_sizes": [
+      1,
+      2,
+      4,
+      8,
+      12
+    ],
+    "pilot_max_new_tokens": 128,
+    "requested_batch_size_per_gpu": 8,
+    "run_mode_name": "validation",
+    "samples_per_category_test": 3,
+    "test_run_mode": true,
+    "token_limit_stages": [
+      512,
+      1024,
+      2048
+    ]
+  },
+  "run_signature": "598e6ff55b35a5124b49bd089f3f47443129912a903310c1fb952148870180b7",
+  "schema_version": 2,
+  "selected_batch_size_per_gpu": null,
+  "selected_category_counts": {
+    "irrelevance": 3,
+    "live_irrelevance": 3,
+    "live_multiple": 3,
+    "live_parallel": 3,
+    "live_parallel_multiple": 3,
+    "live_relevance": 3,
+    "live_simple": 3,
+    "multiple": 3,
+    "parallel": 3,
+    "parallel_multiple": 3,
+    "simple_java": 3,
+    "simple_javascript": 3,
+    "simple_python": 3
+  },
+  "selected_samples": 39,
+  "shards": [],
+  "stage_attempt_counts": {},
+  "token_limit_stages": [
+    512,
+    1024,
+    2048
+  ]
+}
