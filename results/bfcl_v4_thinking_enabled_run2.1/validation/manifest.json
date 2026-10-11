@@ -1,6 +1,12 @@
 {
+  "all_attempt_record_count": 47,
   "attempt_record_count": 47,
   "checkpoint_records_per_commit_target": 100,
+  "completed_utc": "2026-10-11T06:52:35.681301+00:00",
+  "final_generation_errors": 0,
+  "final_record_count": 39,
+  "final_records_still_at_token_limit": 3,
+  "github_sync_pending": false,
   "last_checkpoint_utc": "2026-10-11T06:52:33.470614+00:00",
   "pilot_metrics": [
     {
