@@ -1,4 +1,6 @@
 {
+  "all_attempt_record_count": 48,
+  "all_attempts_journal": "attempt_journal.jsonl",
   "attempt_token_ids_saved": true,
   "base_model": "openbmb/MiniCPM5-2B",
   "batch_size_pilot_enabled": true,
@@ -6,29 +8,1102 @@
   "bfcl_repo": "https://github.com/ShishirPatil/gorilla",
   "cache_enabled": true,
   "checkpoint_policy": "immutable JSONL shards around every 100 completed attempts; final remainder committed at each stage boundary",
-  "checkpoint_shards": [
-    "results/bfcl_v4_thinking_enabled_run2.5/validation/attempts/stage_1024/shard_00001.jsonl",
-    "results/bfcl_v4_thinking_enabled_run2.5/validation/attempts/stage_2048/shard_00001.jsonl",
-    "results/bfcl_v4_thinking_enabled_run2.5/validation/attempts/stage_512/shard_00001.jsonl"
-  ],
-  "checkpointed_attempt_records": 48,
-  "checkpointed_stage_attempt_counts": {
+  "created_or_resumed_utc": "2026-10-11T14:33:37.463857+00:00",
+  "do_sample": false,
+  "elapsed_generation_pipeline_sec_this_session": 533.343113787,
+  "enable_thinking": true,
+  "final_attempt_stage_counts": {
     "1024": 6,
     "2048": 3,
     "512": 39
   },
-  "created_or_resumed_utc": "2026-10-11T14:33:37.463857+00:00",
-  "do_sample": false,
-  "enable_thinking": true,
+  "final_category_counts": {
+    "irrelevance": 3,
+    "live_irrelevance": 3,
+    "live_multiple": 3,
+    "live_parallel": 3,
+    "live_parallel_multiple": 3,
+    "live_relevance": 3,
+    "live_simple": 3,
+    "multiple": 3,
+    "parallel": 3,
+    "parallel_multiple": 3,
+    "simple_java": 3,
+    "simple_javascript": 3,
+    "simple_python": 3
+  },
+  "final_generation_errors": 0,
+  "final_raw_jsonl": "bfcl_native_raw_generations.jsonl",
+  "final_record_count": 39,
+  "final_records_still_at_token_limit": 0,
+  "finalized_utc": "2026-10-11T14:44:35.039481+00:00",
   "generation_dtype": "torch.float16",
   "github_branch": "main",
   "github_commit_every_records": 100,
   "github_repo": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
   "github_run_path": "results/bfcl_v4_thinking_enabled_run2.5/validation",
+  "github_sync_error": null,
+  "github_sync_pending": false,
   "gpu_devices": [
     "cuda:0",
     "cuda:1"
   ],
+  "gpu_monitor_samples": {
+    "0": [
+      {
+        "memory_used_mb": 8309.0,
+        "timestamp": 1791729346.7446907,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 8863.0,
+        "timestamp": 1791729351.7930074,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729356.8364613,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729361.8814027,
+        "utilization_pct": 88.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729366.9258804,
+        "utilization_pct": 95.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729371.9703863,
+        "utilization_pct": 89.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729377.013917,
+        "utilization_pct": 82.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729382.0590708,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729387.1042352,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729392.148811,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729397.1881685,
+        "utilization_pct": 91.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729402.2327113,
+        "utilization_pct": 92.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729407.2724373,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729412.3177211,
+        "utilization_pct": 96.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729417.3616488,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729422.406579,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729427.457977,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729432.503725,
+        "utilization_pct": 82.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729437.5479004,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729442.5880957,
+        "utilization_pct": 34.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729447.6294203,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729452.6738422,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729457.7172482,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729462.7608907,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729467.8037403,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729472.8423545,
+        "utilization_pct": 0.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729477.883994,
+        "utilization_pct": 0.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729482.935941,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729487.9731815,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729493.0149937,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729498.0523574,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729503.094764,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729508.1368926,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729513.1780298,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729518.21398,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729523.2566657,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729528.2991912,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729533.341084,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729538.3837607,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729543.4246602,
+        "utilization_pct": 41.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729548.4677649,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729553.5086927,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729558.550996,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729563.594422,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729568.6371498,
+        "utilization_pct": 41.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729573.6802464,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729578.7234232,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729583.7650936,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729588.8013003,
+        "utilization_pct": 31.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729593.84296,
+        "utilization_pct": 41.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729598.8845346,
+        "utilization_pct": 32.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729603.922786,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729608.9695516,
+        "utilization_pct": 35.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729614.0121536,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729619.0479527,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729624.0899706,
+        "utilization_pct": 41.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729629.1314142,
+        "utilization_pct": 34.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729634.1721106,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729639.2157571,
+        "utilization_pct": 27.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729644.257076,
+        "utilization_pct": 42.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729649.301387,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729654.3383858,
+        "utilization_pct": 0.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729659.3826685,
+        "utilization_pct": 33.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729664.429115,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729669.4756567,
+        "utilization_pct": 41.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729674.5160747,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729679.5604498,
+        "utilization_pct": 33.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729684.6003907,
+        "utilization_pct": 35.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729689.6429532,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729694.6872554,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729699.7323866,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729704.7725487,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729709.8176796,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729714.8620899,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729719.9057953,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729724.9510775,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729729.995478,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729735.039303,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729740.0779226,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729745.1212728,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729750.165714,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729755.2036328,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729760.2479346,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729765.2909381,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729770.3339534,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729775.3762093,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729780.418165,
+        "utilization_pct": 33.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729785.461804,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729790.5061324,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729795.545332,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729800.5841715,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729805.629269,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729810.6689153,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729815.7129247,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729820.758151,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729825.8028784,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729830.8479207,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729835.8888168,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729840.9349232,
+        "utilization_pct": 35.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729845.9787796,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729851.0176187,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729856.0560162,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729861.0994265,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729866.1444693,
+        "utilization_pct": 31.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791729871.1822686,
+        "utilization_pct": 59.0
+      }
+    ],
+    "1": [
+      {
+        "memory_used_mb": 7131.0,
+        "timestamp": 1791729346.7446907,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 7131.0,
+        "timestamp": 1791729351.7930074,
+        "utilization_pct": 96.0
+      },
+      {
+        "memory_used_mb": 7131.0,
+        "timestamp": 1791729356.8364613,
+        "utilization_pct": 60.0
+      },
+      {
+        "memory_used_mb": 7131.0,
+        "timestamp": 1791729361.8814027,
+        "utilization_pct": 61.0
+      },
+      {
+        "memory_used_mb": 7131.0,
+        "timestamp": 1791729366.9258804,
+        "utilization_pct": 66.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729371.9703863,
+        "utilization_pct": 65.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729377.013917,
+        "utilization_pct": 59.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729382.0590708,
+        "utilization_pct": 70.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729387.1042352,
+        "utilization_pct": 72.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729392.148811,
+        "utilization_pct": 73.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729397.1881685,
+        "utilization_pct": 66.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729402.2327113,
+        "utilization_pct": 67.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729407.2724373,
+        "utilization_pct": 74.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729412.3177211,
+        "utilization_pct": 79.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729417.3616488,
+        "utilization_pct": 75.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729422.406579,
+        "utilization_pct": 73.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729427.457977,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729432.503725,
+        "utilization_pct": 49.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729437.5479004,
+        "utilization_pct": 58.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729442.5880957,
+        "utilization_pct": 53.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729447.6294203,
+        "utilization_pct": 55.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729452.6738422,
+        "utilization_pct": 55.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729457.7172482,
+        "utilization_pct": 57.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729462.7608907,
+        "utilization_pct": 58.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729467.8037403,
+        "utilization_pct": 60.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729472.8423545,
+        "utilization_pct": 95.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729477.883994,
+        "utilization_pct": 95.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729482.935941,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729487.9731815,
+        "utilization_pct": 36.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729493.0149937,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729498.0523574,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729503.094764,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729508.1368926,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729513.1780298,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729518.21398,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729523.2566657,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729528.2991912,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729533.341084,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729538.3837607,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729543.4246602,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729548.4677649,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729553.5086927,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729558.550996,
+        "utilization_pct": 35.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729563.594422,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729568.6371498,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729573.6802464,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729578.7234232,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729583.7650936,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729588.8013003,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729593.84296,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729598.8845346,
+        "utilization_pct": 36.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729603.922786,
+        "utilization_pct": 33.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729608.9695516,
+        "utilization_pct": 36.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729614.0121536,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729619.0479527,
+        "utilization_pct": 34.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729624.0899706,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729629.1314142,
+        "utilization_pct": 32.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729634.1721106,
+        "utilization_pct": 36.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729639.2157571,
+        "utilization_pct": 28.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729644.257076,
+        "utilization_pct": 41.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729649.301387,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791729654.3383858,
+        "utilization_pct": 0.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729659.3826685,
+        "utilization_pct": 31.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729664.429115,
+        "utilization_pct": 36.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729669.4756567,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729674.5160747,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729679.5604498,
+        "utilization_pct": 35.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729684.6003907,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729689.6429532,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729694.6872554,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729699.7323866,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729704.7725487,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729709.8176796,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729714.8620899,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729719.9057953,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729724.9510775,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729729.995478,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7221.0,
+        "timestamp": 1791729735.039303,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729740.0779226,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729745.1212728,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729750.165714,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729755.2036328,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729760.2479346,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729765.2909381,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729770.3339534,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729775.3762093,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729780.418165,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729785.461804,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729790.5061324,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729795.545332,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729800.5841715,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729805.629269,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729810.6689153,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729815.7129247,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729820.758151,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729825.8028784,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729830.8479207,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729835.8888168,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729840.9349232,
+        "utilization_pct": 36.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729845.9787796,
+        "utilization_pct": 40.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729851.0176187,
+        "utilization_pct": 38.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729856.0560162,
+        "utilization_pct": 37.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729861.0994265,
+        "utilization_pct": 39.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729866.1444693,
+        "utilization_pct": 32.0
+      },
+      {
+        "memory_used_mb": 7223.0,
+        "timestamp": 1791729871.1822686,
+        "utilization_pct": 0.0
+      }
+    ]
+  },
   "hardware_and_runtime": {
     "cuda_runtime": "12.8",
     "gpus": [
@@ -50,7 +1125,6 @@
     "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
     "torch": "2.11.0+cu128"
   },
-  "last_updated_utc": "2026-10-11T14:44:32.466804+00:00",
   "lora_adapter": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
   "output_folder_name": "bfcl_v4_thinking_enabled_run2.5",
   "package_versions": {
