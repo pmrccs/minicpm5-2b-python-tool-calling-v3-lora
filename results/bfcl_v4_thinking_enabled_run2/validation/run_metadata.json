@@ -7,10 +7,12 @@
   "cache_enabled": true,
   "checkpoint_policy": "immutable JSONL shards around every 100 completed attempts; final remainder committed at each stage boundary",
   "checkpoint_shards": [
+    "results/bfcl_v4_thinking_enabled_run2/validation/attempts/stage_1024/shard_00001.jsonl",
     "results/bfcl_v4_thinking_enabled_run2/validation/attempts/stage_512/shard_00001.jsonl"
   ],
-  "checkpointed_attempt_records": 39,
+  "checkpointed_attempt_records": 45,
   "checkpointed_stage_attempt_counts": {
+    "1024": 6,
     "512": 39
   },
   "created_or_resumed_utc": "2026-10-11T05:59:41.273357+00:00",
@@ -46,7 +48,7 @@
     "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
     "torch": "2.11.0+cu128"
   },
-  "last_updated_utc": "2026-10-11T06:04:43.042323+00:00",
+  "last_updated_utc": "2026-10-11T06:06:35.634854+00:00",
   "lora_adapter": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
   "output_folder_name": "bfcl_v4_thinking_enabled_run2",
   "package_versions": {
