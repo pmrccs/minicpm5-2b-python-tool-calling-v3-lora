@@ -1,0 +1,1229 @@
+[
+  {
+    "id": "live_parallel_multiple_0-0-0",
+    "category": "live_parallel_multiple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate function calling.\n\nRules:\n1. Determine whether the user's request can be handled by the provided functions. Use a function only when it meaningfully supports the request. If no provided function is suitable, respond briefly without function tags; never force an unrelated function to fit.\n2. Select the function or functions that best match the request. Use only provided functions, and preserve their exact names and parameter names.\n3. Extract argument values faithfully from the user's request and the function schema. Do not invent values. Use documented defaults by omitting optional parameters when appropriate. If a required parameter cannot be determined, do not guess or repeatedly reconsider; ask a concise clarification or state what information is missing.\n4. Complete every requested independent operation. Make a separate function block for each required call, and do not stop after handling only part of a multi-part request. Include multiple calls when needed.\n5. Keep the output concise. Do not narrate internal analysis, repeat the same uncertainty, or revisit a decision already made. Once the appropriate action is clear, produce the required function block(s) or a brief natural-language response.\n\nFollow the tool usage guidelines and exact output format below.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"ChaFod\", \"description\": \"Changes the food item based on the customer's request, allowing for modifications to the ingredients or preparation method.\", \"parameters\": {\"type\": \"object\", \"required\": [\"foodItem\"], \"properties\": {\"foodItem\": {\"type\": \"string\", \"description\": \"The name of the food item to be modified as requested by the customer.\"}, \"newIngredients\": {\"type\": \"string\", \"description\": \"A comma-separated list of new ingredients to include in the food item, if any.\", \"default\": \"\"}, \"removeIngredients\": {\"type\": \"string\", \"description\": \"A comma-separated list of ingredients to remove from the food item, if any.\", \"default\": \"\"}, \"specialInstructions\": {\"type\": \"string\", \"description\": \"Special preparation instructions provided by the customer, such as 'extra spicy' or 'no salt'.\", \"default\": \"\"}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"ChaDri.change_drink\", \"description\": \"Modifies the existing drink order to accommodate the customer's new request, ensuring the drink is updated according to the specified preferences.\", \"parameters\": {\"type\": \"object\", \"required\": [\"drink_id\", \"new_preferences\"], \"properties\": {\"drink_id\": {\"type\": \"string\", \"description\": \"The unique identifier of the drink to be changed.\"}, \"new_preferences\": {\"type\": \"object\", \"description\": \"The updated preferences for the drink order.\", \"properties\": {\"size\": {\"type\": \"string\", \"description\": \"The size of the drink the customer prefers.\", \"enum\": [\"small\", \"medium\", \"large\"], \"default\": \"medium\"}, \"temperature\": {\"type\": \"string\", \"description\": \"The temperature at which the drink should be served.\", \"enum\": [\"cold\", \"warm\", \"hot\"], \"default\": \"cold\"}, \"sweetness_level\": {\"type\": \"string\", \"description\": \"The sweetness level the customer requests for the drink.\", \"enum\": [\"none\", \"light\", \"regular\", \"extra\"], \"default\": \"regular\"}, \"milk_type\": {\"type\": \"string\", \"description\": \"The type of milk to be used in the drink, if applicable.\", \"enum\": [\"regular\", \"soy\", \"almond\", \"coconut\"], \"default\": \"regular\"}, \"special_instructions\": {\"type\": \"string\", \"description\": \"Any additional instructions provided by the customer for the drink preparation.\", \"default\": \"\"}}}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nI'd like to change my food order to a Caesar salad without anchovies, and for the drink, can you update my order 123 to a large hot coffee with regular sweetness and almond milk, please?<|im_end|>\n<|im_start|>assistant\n<think>\n",
+    "bfcl_sample": {
+      "id": "live_parallel_multiple_0-0-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "I'd like to change my food order to a Caesar salad without anchovies, and for the drink, can you update my order 123 to a large hot coffee with regular sweetness and almond milk, please?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "ChaFod",
+          "description": "Changes the food item based on the customer's request, allowing for modifications to the ingredients or preparation method.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "foodItem"
+            ],
+            "properties": {
+              "foodItem": {
+                "type": "string",
+                "description": "The name of the food item to be modified as requested by the customer."
+              },
+              "newIngredients": {
+                "type": "string",
+                "description": "A comma-separated list of new ingredients to include in the food item, if any.",
+                "default": ""
+              },
+              "removeIngredients": {
+                "type": "string",
+                "description": "A comma-separated list of ingredients to remove from the food item, if any.",
+                "default": ""
+              },
+              "specialInstructions": {
+                "type": "string",
+                "description": "Special preparation instructions provided by the customer, such as 'extra spicy' or 'no salt'.",
+                "default": ""
+              }
+            }
+          }
+        },
+        {
+          "name": "ChaDri.change_drink",
+          "description": "Modifies the existing drink order to accommodate the customer's new request, ensuring the drink is updated according to the specified preferences.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "drink_id",
+              "new_preferences"
+            ],
+            "properties": {
+              "drink_id": {
+                "type": "string",
+                "description": "The unique identifier of the drink to be changed."
+              },
+              "new_preferences": {
+                "type": "dict",
+                "description": "The updated preferences for the drink order.",
+                "properties": {
+                  "size": {
+                    "type": "string",
+                    "description": "The size of the drink the customer prefers.",
+                    "enum": [
+                      "small",
+                      "medium",
+                      "large"
+                    ],
+                    "default": "medium"
+                  },
+                  "temperature": {
+                    "type": "string",
+                    "description": "The temperature at which the drink should be served.",
+                    "enum": [
+                      "cold",
+                      "warm",
+                      "hot"
+                    ],
+                    "default": "cold"
+                  },
+                  "sweetness_level": {
+                    "type": "string",
+                    "description": "The sweetness level the customer requests for the drink.",
+                    "enum": [
+                      "none",
+                      "light",
+                      "regular",
+                      "extra"
+                    ],
+                    "default": "regular"
+                  },
+                  "milk_type": {
+                    "type": "string",
+                    "description": "The type of milk to be used in the drink, if applicable.",
+                    "enum": [
+                      "regular",
+                      "soy",
+                      "almond",
+                      "coconut"
+                    ],
+                    "default": "regular"
+                  },
+                  "special_instructions": {
+                    "type": "string",
+                    "description": "Any additional instructions provided by the customer for the drink preparation.",
+                    "default": ""
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "Okay, let's see. The user wants to change their food order to a Caesar salad without anchovies. So I need to use the \"ChaFod\" function. The food item is \"Caesar Salad\", and they want to remove anchovies. The new ingredients aren't specified, so I should leave that as default. The special instructions are none mentioned, so maybe no need to add that. Wait, the function parameters require \"foodItem\", \"newIngredients\", \"removeIngredients\", and \"specialInstructions\". So I'll set \"foodItem\" to \"Caesar Salad\", \"removeIngredients\" to \"anchovies\", and leave the others as default. Then, for the drink, they want to update order 123 to a large hot coffee with regular sweetness and almond milk. The function \"ChaDri.change_drink\" is the right one. The drink_id is \"123\", and new_preferences should have size \"large\", temperature \"hot\", sweetness_level \"regular\", milk_type \"almond\", and no special instructions. So I need to call both functions.\n</think>\n\n<function name=\"ChaFod\"><param name=\"foodItem\">Caesar Salad</param><param name=\"removeIngredients\">anchovies</param></function>\n<function name=\"ChaDri.change_drink\"><param name=\"drink_id\">123</param><param name=\"new_preferences\">{'size': 'large', 'temperature': 'hot', 'sweetness_level': 'regular', 'milk_type': 'almond'}</param></function><|im_end|>",
+    "token_ids": [
+      18812,
+      33,
+      1805,
+      468,
+      1171,
+      35,
+      416,
+      5390,
+      8471,
+      317,
+      2437,
+      696,
+      3301,
+      1880,
+      317,
+      280,
+      29397,
+      30428,
+      1904,
+      19139,
+      40571,
+      35,
+      2996,
+      354,
+      1178,
+      317,
+      1170,
+      285,
+      458,
+      2145,
+      60530,
+      400,
+      23,
+      1323,
+      35,
+      416,
+      3301,
+      9082,
+      357,
+      458,
+      19877,
+      21351,
+      70639,
+      923,
+      316,
+      699,
+      1427,
+      317,
+      9789,
+      19139,
+      40571,
+      35,
+      416,
+      1071,
+      19562,
+      12381,
+      728,
+      10338,
+      33,
+      702,
+      354,
+      1153,
+      4813,
+      380,
+      390,
+      9973,
+      35,
+      416,
+      3057,
+      12613,
+      457,
+      7647,
+      7002,
+      33,
+      702,
+      8983,
+      768,
+      1178,
+      317,
+      1804,
+      380,
+      35,
+      42705,
+      33,
+      285,
+      1323,
+      4841,
+      3491,
+      458,
+      31590,
+      15709,
+      923,
+      458,
+      1897,
+      76175,
+      63727,
+      923,
+      458,
+      11533,
+      76175,
+      63727,
+      923,
+      316,
+      458,
+      39733,
+      115592,
+      7316,
+      2996,
+      354,
+      2305,
+      1157,
+      458,
+      31590,
+      15709,
+      23,
+      317,
+      458,
+      19877,
+      21351,
+      70639,
+      923,
+      458,
+      11533,
+      76175,
+      63727,
+      23,
+      317,
+      458,
+      10432,
+      40571,
+      923,
+      316,
+      4813,
+      285,
+      2801,
+      390,
+      9973,
+      35,
+      2946,
+      33,
+      374,
+      285,
+      6904,
+      33,
+      699,
+      1427,
+      317,
+      12767,
+      1880,
+      242,
+      5645,
+      317,
+      280,
+      2090,
+      4679,
+      10345,
+      401,
+      5029,
+      56694,
+      316,
+      48263,
+      10463,
+      35,
+      416,
+      1323,
+      458,
+      2145,
+      17022,
+      569,
+      35,
+      5152,
+      3603,
+      83903,
+      23,
+      357,
+      285,
+      1348,
+      678,
+      35,
+      416,
+      6904,
+      5818,
+      357,
+      458,
+      5645,
+      923,
+      316,
+      1071,
+      32084,
+      5078,
+      1153,
+      558,
+      3074,
+      458,
+      37236,
+      923,
+      4085,
+      458,
+      21687,
+      923,
+      56694,
+      55283,
+      458,
+      14871,
+      923,
+      10463,
+      13578,
+      458,
+      11767,
+      1011,
+      923,
+      316,
+      768,
+      3057,
+      12613,
+      35,
+      2996,
+      354,
+      1178,
+      317,
+      1455,
+      1450,
+      3958,
+      350,
+      9,
+      130063,
+      18,
+      2546,
+      943,
+      2145,
+      60530,
+      400,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      15709,
+      1822,
+      19877,
+      21351,
+      70639,
+      21,
+      20,
+      2546,
+      943,
+      11533,
+      76175,
+      63727,
+      1822,
+      10432,
+      40571,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      2145,
+      17022,
+      569,
+      35,
+      5152,
+      3603,
+      83903,
+      1822,
+      20,
+      2546,
+      943,
+      8258,
+      995,
+      5818,
+      1822,
+      5645,
+      21,
+      20,
+      2546,
+      943,
+      1897,
+      32084,
+      5078,
+      1822,
+      25765,
+      9396,
+      1052,
+      495,
+      37236,
+      649,
+      495,
+      39221,
+      1052,
+      495,
+      21687,
+      649,
+      495,
+      92356,
+      1344,
+      55283,
+      1052,
+      495,
+      14871,
+      649,
+      495,
+      104580,
+      13578,
+      1052,
+      495,
+      11767,
+      1011,
+      40234,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "19b1684941d42e70fa64150a639299272c7e46c83c3a0cd41db76f85b2050cc9",
+    "system_prompt_sha256": "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57",
+    "input_tokens": 977,
+    "padded_input_tokens": 1624,
+    "output_tokens": 313,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 7.9460008265000015,
+    "batch_latency_sec": 95.35200991800002,
+    "preparation_sec": 0.053659903999914604,
+    "batch_tokens_per_sec": 30.245822846106304,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.78980827331543,
+    "memory_reserved_gb_after_generation": 7.87890625,
+    "peak_memory_allocated_gb": 7.395340442657471,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": true,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-11T06:42:59.003818+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 313,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_multiple_1-1-0",
+    "category": "live_parallel_multiple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate function calling.\n\nRules:\n1. Determine whether the user's request can be handled by the provided functions. Use a function only when it meaningfully supports the request. If no provided function is suitable, respond briefly without function tags; never force an unrelated function to fit.\n2. Select the function or functions that best match the request. Use only provided functions, and preserve their exact names and parameter names.\n3. Extract argument values faithfully from the user's request and the function schema. Do not invent values. Use documented defaults by omitting optional parameters when appropriate. If a required parameter cannot be determined, do not guess or repeatedly reconsider; ask a concise clarification or state what information is missing.\n4. Complete every requested independent operation. Make a separate function block for each required call, and do not stop after handling only part of a multi-part request. Include multiple calls when needed.\n5. Keep the output concise. Do not narrate internal analysis, repeat the same uncertainty, or revisit a decision already made. Once the appropriate action is clear, produce the required function block(s) or a brief natural-language response.\n\nFollow the tool usage guidelines and exact output format below.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather conditions for a specified location, such as 'City, State' or 'City, Country'.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which the weather is being requested, in the format of 'City, State (abbr)' or 'City, Country', such as 'Berkeley, CA' or 'London, UK'.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit system used for weather condition values (e.g., temperature, wind speed).\", \"enum\": [\"metric\", \"imperial\"], \"default\": \"metric\"}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"start_oncall\", \"description\": \"Initiate an on-call support session when a user explicitly requests assistance. The user's question, which should be clear and devoid of irrelevant details, can be referenced from the preceding chat interaction.\", \"parameters\": {\"type\": \"object\", \"required\": [\"question\", \"oncall_type\"], \"properties\": {\"question\": {\"type\": \"string\", \"description\": \"The concise question posed by the user, with irrelevant information omitted.\"}, \"oncall_type\": {\"type\": \"string\", \"description\": \"The category of the on-call support request.\", \"enum\": [\"swift\", \"mbox\"]}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"create_workspace\", \"description\": \"Creates a new workspace in the mbox system, based on a specified branch of the aweme git repository.\", \"parameters\": {\"type\": \"object\", \"required\": [\"name\", \"base_branch\"], \"properties\": {\"name\": {\"type\": \"string\", \"description\": \"The name of the new workspace. Must be unique within the mbox system.\"}, \"base_branch\": {\"type\": \"string\", \"description\": \"The name of the base branch in the aweme git repository from which the workspace will be created.\"}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"generate_password\", \"description\": \"Generate a secure, random password based on specified criteria including length, numerical, and special character inclusion.\", \"parameters\": {\"type\": \"object\", \"required\": [\"length\"], \"properties\": {\"length\": {\"type\": \"integer\", \"description\": \"The desired number of characters in the password. Must be an integer greater than 0.\"}, \"include_numbers\": {\"type\": \"boolean\", \"description\": \"Whether to include numerical digits (0-9) in the password.\", \"default\": true}, \"include_special_characters\": {\"type\": \"boolean\", \"description\": \"Whether to include special characters (e.g., !, @, #) in the password.\", \"default\": false}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\n能帮我查一下中国广州市和北京市现在的天气状况吗？请使用公制单位。<|im_end|>\n<|im_start|>assistant\n<think>\n",
+    "bfcl_sample": {
+      "id": "live_parallel_multiple_1-1-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "能帮我查一下中国广州市和北京市现在的天气状况吗？请使用公制单位。"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather conditions for a specified location, such as 'City, State' or 'City, Country'.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which the weather is being requested, in the format of 'City, State (abbr)' or 'City, Country', such as 'Berkeley, CA' or 'London, UK'."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit system used for weather condition values (e.g., temperature, wind speed).",
+                "enum": [
+                  "metric",
+                  "imperial"
+                ],
+                "default": "metric"
+              }
+            }
+          }
+        },
+        {
+          "name": "start_oncall",
+          "description": "Initiate an on-call support session when a user explicitly requests assistance. The user's question, which should be clear and devoid of irrelevant details, can be referenced from the preceding chat interaction.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "question",
+              "oncall_type"
+            ],
+            "properties": {
+              "question": {
+                "type": "string",
+                "description": "The concise question posed by the user, with irrelevant information omitted."
+              },
+              "oncall_type": {
+                "type": "string",
+                "description": "The category of the on-call support request.",
+                "enum": [
+                  "swift",
+                  "mbox"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "create_workspace",
+          "description": "Creates a new workspace in the mbox system, based on a specified branch of the aweme git repository.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "name",
+              "base_branch"
+            ],
+            "properties": {
+              "name": {
+                "type": "string",
+                "description": "The name of the new workspace. Must be unique within the mbox system."
+              },
+              "base_branch": {
+                "type": "string",
+                "description": "The name of the base branch in the aweme git repository from which the workspace will be created."
+              }
+            }
+          }
+        },
+        {
+          "name": "generate_password",
+          "description": "Generate a secure, random password based on specified criteria including length, numerical, and special character inclusion.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "length"
+            ],
+            "properties": {
+              "length": {
+                "type": "integer",
+                "description": "The desired number of characters in the password. Must be an integer greater than 0."
+              },
+              "include_numbers": {
+                "type": "boolean",
+                "description": "Whether to include numerical digits (0-9) in the password.",
+                "default": true
+              },
+              "include_special_characters": {
+                "type": "boolean",
+                "description": "Whether to include special characters (e.g., !, @, #) in the password.",
+                "default": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "Okay, the user wants the current weather in Guangzhou and Beijing using metric units. I need to call the get_current_weather function twice, once for each city. The first call would be for Guangzhou, and the second for Beijing. The function requires the location parameter as \"City, State\" or \"City, Country\", so I'll use \"Guangzhou, China\" and \"Beijing, China\" respectively. The unit is specified as \"metric\" as per the user's request. Let me make sure the arguments are correctly formatted.\n</think>\n\n<function name=\"get_current_weather\"><param name=\"location\">Guangzhou, China</param><param name=\"unit\">metric</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">Beijing, China</param><param name=\"unit\">metric</param></function><|im_end|>",
+    "token_ids": [
+      18812,
+      33,
+      285,
+      5390,
+      8471,
+      285,
+      2774,
+      10481,
+      310,
+      60587,
+      61606,
+      316,
+      32175,
+      1685,
+      10984,
+      6395,
+      35,
+      354,
+      1178,
+      317,
+      1455,
+      285,
+      1212,
+      4025,
+      5523,
+      84,
+      29996,
+      1323,
+      10262,
+      33,
+      3097,
+      374,
+      1225,
+      4321,
+      35,
+      416,
+      1088,
+      1455,
+      806,
+      365,
+      374,
+      60587,
+      61606,
+      33,
+      316,
+      285,
+      2042,
+      374,
+      32175,
+      35,
+      416,
+      1323,
+      6113,
+      285,
+      6987,
+      6138,
+      390,
+      458,
+      27956,
+      33,
+      4568,
+      23,
+      448,
+      458,
+      27956,
+      33,
+      23286,
+      923,
+      702,
+      354,
+      2305,
+      1170,
+      458,
+      12670,
+      664,
+      61606,
+      33,
+      6168,
+      23,
+      316,
+      458,
+      110281,
+      33,
+      6168,
+      23,
+      5115,
+      35,
+      416,
+      5022,
+      357,
+      10338,
+      390,
+      458,
+      79178,
+      23,
+      390,
+      692,
+      285,
+      5390,
+      468,
+      7321,
+      35,
+      2789,
+      559,
+      1457,
+      3153,
+      285,
+      8372,
+      457,
+      15433,
+      90884,
+      350,
+      9,
+      130063,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      12670,
+      664,
+      61606,
+      33,
+      6168,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      79178,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      110281,
+      33,
+      6168,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      79178,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "90c711a308585cdcfaf84a883c2bcc24ee45272b55399b48c55f9f3e4ec15371",
+    "system_prompt_sha256": "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57",
+    "input_tokens": 1028,
+    "padded_input_tokens": 1624,
+    "output_tokens": 170,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 7.9460008265000015,
+    "batch_latency_sec": 95.35200991800002,
+    "preparation_sec": 0.053659903999914604,
+    "batch_tokens_per_sec": 30.245822846106304,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.78980827331543,
+    "memory_reserved_gb_after_generation": 7.87890625,
+    "peak_memory_allocated_gb": 7.395340442657471,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": true,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-11T06:42:59.001915+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 170,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_multiple_2-2-0",
+    "category": "live_parallel_multiple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate function calling.\n\nRules:\n1. Determine whether the user's request can be handled by the provided functions. Use a function only when it meaningfully supports the request. If no provided function is suitable, respond briefly without function tags; never force an unrelated function to fit.\n2. Select the function or functions that best match the request. Use only provided functions, and preserve their exact names and parameter names.\n3. Extract argument values faithfully from the user's request and the function schema. Do not invent values. Use documented defaults by omitting optional parameters when appropriate. If a required parameter cannot be determined, do not guess or repeatedly reconsider; ask a concise clarification or state what information is missing.\n4. Complete every requested independent operation. Make a separate function block for each required call, and do not stop after handling only part of a multi-part request. Include multiple calls when needed.\n5. Keep the output concise. Do not narrate internal analysis, repeat the same uncertainty, or revisit a decision already made. Once the appropriate action is clear, produce the required function block(s) or a brief natural-language response.\n\nFollow the tool usage guidelines and exact output format below.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"OpenWeatherMap.get_current_weather\", \"description\": \"Fetches the current weather information for a specified location using the OpenWeatherMap API.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which current weather information is requested, specified in the format of 'City, Country' in English. For example: 'Seoul, South Korea'.\", \"enum\": [\"New York, USA\", \"London, UK\", \"Seoul, South Korea\", \"Sydney, Australia\", \"Tokyo, Japan\"]}, \"units\": {\"type\": \"string\", \"description\": \"The unit system used for the weather data. Can be 'metric' for Celsius, 'imperial' for Fahrenheit, or 'standard' for Kelvin.\", \"enum\": [\"metric\", \"imperial\", \"standard\"], \"default\": \"metric\"}, \"api_key\": {\"type\": \"string\", \"description\": \"The API key used to authenticate requests to the OpenWeatherMap API. This key should be kept secret.\", \"default\": \"YOUR_API_KEY_HERE\"}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"ControlAppliance.execute\", \"description\": \"This function is designed for controlling a home appliance, checking its current status and settings, as well as monitoring indoor air properties like air quality and temperature. For control commands, the input must clearly specify 'power on' or 'start'. To check the status, the input must include the keyword '확인'. Note that this tool is not intended for describing, creating, deleting, or removing modes or routines.\", \"parameters\": {\"type\": \"object\", \"required\": [\"command\"], \"properties\": {\"command\": {\"type\": \"string\", \"description\": \"The command must be specified as a string in Korean, consisting of the room name, appliance name (or alias), and operation command, separated by commas. Examples: '거실, 에어컨, 실행' for turning on the air conditioner in the living room, ', 에어컨, 냉방 실행' for activating cooling without specifying the room, '다용도실, 통돌이, 중지' for stopping the washing machine (alias '통돌이') in the utility room.\", \"enum\": [\"거실, 에어컨, 실행\", \", 에어컨, 냉방 실행\", \"다용도실, 통돌이, 중지\"]}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"HNA_WQA.search\", \"description\": \"Retrieve up-to-date information by searching the web using keywords. This is particularly useful for queries regarding topics that change frequently, such as the current president, recent movies, or popular songs.\", \"parameters\": {\"type\": \"object\", \"required\": [\"keyword\"], \"properties\": {\"keyword\": {\"type\": \"string\", \"description\": \"The search term used by the HNA WQA to find relevant information on the web.\"}, \"result_format\": {\"type\": \"string\", \"description\": \"The desired format of the search results.\", \"enum\": [\"text\", \"json\", \"xml\"], \"default\": \"text\"}, \"language\": {\"type\": \"string\", \"description\": \"The language preference for the search results.\", \"enum\": [\"EN\", \"ES\", \"FR\", \"DE\"], \"default\": \"EN\"}, \"max_results\": {\"type\": \"integer\", \"description\": \"Maximum number of search results to return.\", \"default\": 10}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"HNA_NEWS.search\", \"description\": \"Searches for recent events and news based on the specified keyword.\", \"parameters\": {\"type\": \"object\", \"required\": [\"keyword\"], \"properties\": {\"keyword\": {\"type\": \"string\", \"description\": \"The key term used to search for relevant news articles.\"}, \"category\": {\"type\": \"string\", \"description\": \"The category to filter news articles by.\", \"enum\": [\"Politics\", \"Economy\", \"Sports\", \"Technology\", \"Entertainment\"], \"default\": \"General\"}, \"date_range\": {\"type\": \"string\", \"description\": \"The date range for the news search, formatted as 'YYYY-MM-DD to YYYY-MM-DD'.\", \"default\": \"null\"}, \"sort_by\": {\"type\": \"string\", \"description\": \"The sorting order of the search results.\", \"enum\": [\"date\", \"relevance\"], \"default\": \"date\"}, \"language\": {\"type\": \"string\", \"description\": \"The language of the news articles to retrieve.\", \"enum\": [\"EN\", \"FR\", \"ES\", \"DE\", \"IT\"], \"default\": \"EN\"}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"cookbook.search_recipe\", \"description\": \"Searches for cooking recipes based on a provided keyword. Returns a list of recipes that contain the keyword in their title or ingredients list.\", \"parameters\": {\"type\": \"object\", \"required\": [\"keyword\"], \"properties\": {\"keyword\": {\"type\": \"string\", \"description\": \"The keyword to search for in the recipe titles or ingredients.\"}, \"cuisine\": {\"type\": \"string\", \"description\": \"The cuisine type to narrow down the search results.\", \"enum\": [\"Italian\", \"Chinese\", \"Indian\", \"French\", \"Mexican\"], \"default\": \"Italian\"}, \"max_results\": {\"type\": \"integer\", \"description\": \"The maximum number of recipe results to return.\", \"default\": 10}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\n거실, 에어컨, 실행하고, 침실, 공기청정기, 중지해줘.<|im_end|>\n<|im_start|>assistant\n<think>\n",
+    "bfcl_sample": {
+      "id": "live_parallel_multiple_2-2-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "거실, 에어컨, 실행하고, 침실, 공기청정기, 중지해줘."
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "OpenWeatherMap.get_current_weather",
+          "description": "Fetches the current weather information for a specified location using the OpenWeatherMap API.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which current weather information is requested, specified in the format of 'City, Country' in English. For example: 'Seoul, South Korea'.",
+                "enum": [
+                  "New York, USA",
+                  "London, UK",
+                  "Seoul, South Korea",
+                  "Sydney, Australia",
+                  "Tokyo, Japan"
+                ]
+              },
+              "units": {
+                "type": "string",
+                "description": "The unit system used for the weather data. Can be 'metric' for Celsius, 'imperial' for Fahrenheit, or 'standard' for Kelvin.",
+                "enum": [
+                  "metric",
+                  "imperial",
+                  "standard"
+                ],
+                "default": "metric"
+              },
+              "api_key": {
+                "type": "string",
+                "description": "The API key used to authenticate requests to the OpenWeatherMap API. This key should be kept secret.",
+                "default": "YOUR_API_KEY_HERE"
+              }
+            }
+          }
+        },
+        {
+          "name": "ControlAppliance.execute",
+          "description": "This function is designed for controlling a home appliance, checking its current status and settings, as well as monitoring indoor air properties like air quality and temperature. For control commands, the input must clearly specify 'power on' or 'start'. To check the status, the input must include the keyword '확인'. Note that this tool is not intended for describing, creating, deleting, or removing modes or routines.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "command"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "description": "The command must be specified as a string in Korean, consisting of the room name, appliance name (or alias), and operation command, separated by commas. Examples: '거실, 에어컨, 실행' for turning on the air conditioner in the living room, ', 에어컨, 냉방 실행' for activating cooling without specifying the room, '다용도실, 통돌이, 중지' for stopping the washing machine (alias '통돌이') in the utility room.",
+                "enum": [
+                  "거실, 에어컨, 실행",
+                  ", 에어컨, 냉방 실행",
+                  "다용도실, 통돌이, 중지"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "name": "HNA_WQA.search",
+          "description": "Retrieve up-to-date information by searching the web using keywords. This is particularly useful for queries regarding topics that change frequently, such as the current president, recent movies, or popular songs.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "The search term used by the HNA WQA to find relevant information on the web."
+              },
+              "result_format": {
+                "type": "string",
+                "description": "The desired format of the search results.",
+                "enum": [
+                  "text",
+                  "json",
+                  "xml"
+                ],
+                "default": "text"
+              },
+              "language": {
+                "type": "string",
+                "description": "The language preference for the search results.",
+                "enum": [
+                  "EN",
+                  "ES",
+                  "FR",
+                  "DE"
+                ],
+                "default": "EN"
+              },
+              "max_results": {
+                "type": "integer",
+                "description": "Maximum number of search results to return.",
+                "default": 10
+              }
+            }
+          }
+        },
+        {
+          "name": "HNA_NEWS.search",
+          "description": "Searches for recent events and news based on the specified keyword.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "The key term used to search for relevant news articles."
+              },
+              "category": {
+                "type": "string",
+                "description": "The category to filter news articles by.",
+                "enum": [
+                  "Politics",
+                  "Economy",
+                  "Sports",
+                  "Technology",
+                  "Entertainment"
+                ],
+                "default": "General"
+              },
+              "date_range": {
+                "type": "string",
+                "description": "The date range for the news search, formatted as 'YYYY-MM-DD to YYYY-MM-DD'.",
+                "default": "null"
+              },
+              "sort_by": {
+                "type": "string",
+                "description": "The sorting order of the search results.",
+                "enum": [
+                  "date",
+                  "relevance"
+                ],
+                "default": "date"
+              },
+              "language": {
+                "type": "string",
+                "description": "The language of the news articles to retrieve.",
+                "enum": [
+                  "EN",
+                  "FR",
+                  "ES",
+                  "DE",
+                  "IT"
+                ],
+                "default": "EN"
+              }
+            }
+          }
+        },
+        {
+          "name": "cookbook.search_recipe",
+          "description": "Searches for cooking recipes based on a provided keyword. Returns a list of recipes that contain the keyword in their title or ingredients list.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "keyword"
+            ],
+            "properties": {
+              "keyword": {
+                "type": "string",
+                "description": "The keyword to search for in the recipe titles or ingredients."
+              },
+              "cuisine": {
+                "type": "string",
+                "description": "The cuisine type to narrow down the search results.",
+                "enum": [
+                  "Italian",
+                  "Chinese",
+                  "Indian",
+                  "French",
+                  "Mexican"
+                ],
+                "default": "Italian"
+              },
+              "max_results": {
+                "type": "integer",
+                "description": "The maximum number of recipe results to return.",
+                "default": 10
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "Okay, the user wants to turn on the air conditioner in the living room and stop the air purifier in the bedroom. Let me check the available functions. There's the \"ControlAppliance.execute\" function which can handle appliance control. The required parameters are the command in Korean. The command should be \"거실, 에어컨, 실행\" for turning on the AC in the living room and \"침실, 공기청정기, 중지\" for stopping the air purifier in the bedroom. I need to make two separate function calls for each command.\n</think>\n\n<function name=\"ControlAppliance.execute\"><param name=\"command\">거실, 에어컨, 실행</param></function>\n<function name=\"ControlAppliance.execute\"><param name=\"command\">침실, 공기청정기, 중지</param></function><|im_end|>",
+    "token_ids": [
+      18812,
+      33,
+      285,
+      5390,
+      8471,
+      317,
+      1859,
+      376,
+      285,
+      3003,
+      103573,
+      310,
+      285,
+      4520,
+      2678,
+      316,
+      5391,
+      285,
+      3003,
+      2052,
+      8517,
+      310,
+      285,
+      16153,
+      35,
+      2789,
+      559,
+      4132,
+      285,
+      3119,
+      3958,
+      35,
+      1824,
+      468,
+      285,
+      458,
+      25990,
+      8333,
+      45244,
+      78486,
+      23,
+      1323,
+      617,
+      571,
+      9538,
+      71977,
+      2287,
+      35,
+      416,
+      3688,
+      4841,
+      457,
+      285,
+      5913,
+      310,
+      26064,
+      35,
+      416,
+      5913,
+      1153,
+      365,
+      458,
+      15614,
+      16297,
+      33,
+      37756,
+      7004,
+      114994,
+      33,
+      104351,
+      23,
+      374,
+      10132,
+      376,
+      285,
+      16878,
+      310,
+      285,
+      4520,
+      2678,
+      316,
+      458,
+      46298,
+      16297,
+      33,
+      13916,
+      4529,
+      23400,
+      7490,
+      4529,
+      33,
+      13620,
+      3730,
+      23,
+      374,
+      22220,
+      285,
+      3003,
+      2052,
+      8517,
+      310,
+      285,
+      16153,
+      35,
+      354,
+      1178,
+      317,
+      1457,
+      947,
+      7020,
+      1323,
+      8447,
+      374,
+      1225,
+      5913,
+      350,
+      9,
+      130063,
+      18,
+      2546,
+      943,
+      25990,
+      8333,
+      45244,
+      78486,
+      1822,
+      20,
+      2546,
+      943,
+      22404,
+      1822,
+      15614,
+      16297,
+      33,
+      37756,
+      7004,
+      114994,
+      33,
+      104351,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      25990,
+      8333,
+      45244,
+      78486,
+      1822,
+      20,
+      2546,
+      943,
+      22404,
+      1822,
+      46298,
+      16297,
+      33,
+      13916,
+      4529,
+      23400,
+      7490,
+      4529,
+      33,
+      13620,
+      3730,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "9dc403fe01dd76544472e9a7fdc3a16c9f5096ce4361876dd3aa2e3d5a3376ee",
+    "system_prompt_sha256": "a717c5835fbe2703b20e70e5fcf3603ce4645c7e5c71f8b799816cbacf40fb57",
+    "input_tokens": 1592,
+    "padded_input_tokens": 1624,
+    "output_tokens": 169,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 7.9460008265000015,
+    "batch_latency_sec": 95.35200991800002,
+    "preparation_sec": 0.053659903999914604,
+    "batch_tokens_per_sec": 30.245822846106304,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.78980827331543,
+    "memory_reserved_gb_after_generation": 7.87890625,
+    "peak_memory_allocated_gb": 7.395340442657471,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": true,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-11T06:42:58.998547+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 169,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  }
+]
