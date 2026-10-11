@@ -1,7 +1,7 @@
 {
-  "attempt_record_count": 0,
+  "attempt_record_count": 39,
   "checkpoint_records_per_commit_target": 100,
-  "last_checkpoint_utc": null,
+  "last_checkpoint_utc": "2026-10-11T10:54:53.165048+00:00",
   "pilot_metrics": [
     {
       "batch_size": 1,
@@ -242,8 +242,12 @@
     "simple_python": 3
   },
   "selected_samples": 39,
-  "shards": [],
-  "stage_attempt_counts": {},
+  "shards": [
+    "results/bfcl_v4_thinking_enabled_run2.4/validation/attempts/stage_512/shard_00001.jsonl"
+  ],
+  "stage_attempt_counts": {
+    "512": 39
+  },
   "token_limit_stages": [
     512,
     1024,
