@@ -1,0 +1,370 @@
+[
+  {
+    "id": "live_simple_0-0-0",
+    "category": "live_simple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_user_info\", \"description\": \"Retrieve details for a specific user by their unique identifier.\", \"parameters\": {\"type\": \"object\", \"required\": [\"user_id\"], \"properties\": {\"user_id\": {\"type\": \"integer\", \"description\": \"The unique identifier of the user. It is used to fetch the specific user details from the database.\"}, \"special\": {\"type\": \"string\", \"description\": \"Any special information or parameters that need to be considered while fetching user details.\", \"default\": \"none\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nCan you retrieve the details for the user with the ID 7890, who has black as their special request?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_simple_0-0-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Can you retrieve the details for the user with the ID 7890, who has black as their special request?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_user_info",
+          "description": "Retrieve details for a specific user by their unique identifier.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "user_id"
+            ],
+            "properties": {
+              "user_id": {
+                "type": "integer",
+                "description": "The unique identifier of the user. It is used to fetch the specific user details from the database."
+              },
+              "special": {
+                "type": "string",
+                "description": "Any special information or parameters that need to be considered while fetching user details.",
+                "default": "none"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_user_info\"><param name=\"user_id\">7890</param><param name=\"special\">black</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      43290,
+      35857,
+      1822,
+      20,
+      2546,
+      943,
+      8448,
+      5818,
+      1822,
+      17371,
+      37,
+      21,
+      20,
+      2546,
+      943,
+      39733,
+      1822,
+      17460,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "66a28f21205dc72de82f2e9a9d304cf42d2e51902b0c5b7fa88fd31bd13abbdb",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 879,
+    "padded_input_tokens": 936,
+    "output_tokens": 25,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 3.6652951963333322,
+    "batch_latency_sec": 43.98354235599999,
+    "preparation_sec": 0.02745452600004228,
+    "batch_tokens_per_sec": 15.528535525216263,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.789702892303467,
+    "memory_reserved_gb_after_generation": 6.833984375,
+    "peak_memory_allocated_gb": 6.283635139465332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:25:41.365300+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 25,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_simple_1-1-0",
+    "category": "live_simple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"github_star\", \"description\": \"Generates a URL for tracking the star history of specified GitHub repositories, with the option to align them on the same timeline.\", \"parameters\": {\"type\": \"object\", \"required\": [\"repos\"], \"properties\": {\"repos\": {\"type\": \"string\", \"description\": \"A comma-separated list of GitHub repositories to track, each in the 'owner/repo' format, such as 'octocat/Hello-World,octo-org/octo-repo'.\"}, \"aligned\": {\"type\": \"boolean\", \"description\": \"Whether to align the repositories on the same timeline for comparison. If true, the star history of all repositories will start from the same point.\", \"default\": false}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nI want to see the star history of ShishirPatil/gorilla and gorilla-llm/gorilla-cli, with the timelines aligned, so that I can more clearly observe the rate of change from their initial releases.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_simple_1-1-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "I want to see the star history of ShishirPatil/gorilla and gorilla-llm/gorilla-cli, with the timelines aligned, so that I can more clearly observe the rate of change from their initial releases."
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "github_star",
+          "description": "Generates a URL for tracking the star history of specified GitHub repositories, with the option to align them on the same timeline.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "repos"
+            ],
+            "properties": {
+              "repos": {
+                "type": "string",
+                "description": "A comma-separated list of GitHub repositories to track, each in the 'owner/repo' format, such as 'octocat/Hello-World,octo-org/octo-repo'."
+              },
+              "aligned": {
+                "type": "boolean",
+                "description": "Whether to align the repositories on the same timeline for comparison. If true, the star history of all repositories will start from the same point.",
+                "default": false
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"github_star\"><param name=\"repos\">ShishirPatil/gorilla,gorilla-llm/gorilla-cli</param><param name=\"aligned\">True</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      17206,
+      84,
+      8687,
+      1822,
+      20,
+      2546,
+      943,
+      284,
+      1202,
+      1822,
+      4486,
+      857,
+      385,
+      16226,
+      340,
+      36,
+      3751,
+      9364,
+      33,
+      3751,
+      9364,
+      34,
+      785,
+      98,
+      36,
+      3751,
+      9364,
+      13557,
+      94,
+      21,
+      20,
+      2546,
+      943,
+      45285,
+      1822,
+      9390,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "5b4b1c6e715eac3e697cb8b09fccef2999b8a6764134b59f245ebca3e48f09be",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 948,
+    "padded_input_tokens": 1080,
+    "output_tokens": 42,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 1.082202352249998,
+    "batch_latency_sec": 12.986428226999976,
+    "preparation_sec": 0.05986309700000447,
+    "batch_tokens_per_sec": 39.65678560709,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.7896223068237305,
+    "memory_reserved_gb_after_generation": 6.83203125,
+    "peak_memory_allocated_gb": 6.519719123840332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:24:57.343949+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 42,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_simple_2-2-0",
+    "category": "live_simple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"uber.ride\", \"description\": \"Finds a suitable Uber ride for customers based on their location, desired ride type, and maximum wait time.\", \"parameters\": {\"type\": \"object\", \"required\": [\"loc\", \"type\", \"time\"], \"properties\": {\"loc\": {\"type\": \"string\", \"description\": \"The starting location for the Uber ride, in the format of 'Street Address, City, State (abbr), Country'.\"}, \"type\": {\"type\": \"string\", \"description\": \"The type of Uber ride the user is requesting.\", \"enum\": [\"plus\", \"comfort\", \"black\"]}, \"time\": {\"type\": \"integer\", \"description\": \"The maximum amount of time the customer is willing to wait for the ride, specified in seconds.\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nI need a Comfort Uber ride from 2020 Addison Street, Berkeley, CA, USA, and I can wait up to 600 seconds for it.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_simple_2-2-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "I need a Comfort Uber ride from 2020 Addison Street, Berkeley, CA, USA, and I can wait up to 600 seconds for it."
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "uber.ride",
+          "description": "Finds a suitable Uber ride for customers based on their location, desired ride type, and maximum wait time.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "loc",
+              "type",
+              "time"
+            ],
+            "properties": {
+              "loc": {
+                "type": "string",
+                "description": "The starting location for the Uber ride, in the format of 'Street Address, City, State (abbr), Country'."
+              },
+              "type": {
+                "type": "string",
+                "description": "The type of Uber ride the user is requesting.",
+                "enum": [
+                  "plus",
+                  "comfort",
+                  "black"
+                ]
+              },
+              "time": {
+                "type": "integer",
+                "description": "The maximum amount of time the customer is willing to wait for the ride, specified in seconds."
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"uber.ride\"><param name=\"loc\">2020 Addison Street, Berkeley, CA, USA</param><param name=\"type\">comfort</param><param name=\"time\">600</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      16252,
+      6754,
+      592,
+      1822,
+      20,
+      2546,
+      943,
+      18370,
+      1822,
+      1734,
+      37,
+      53615,
+      7096,
+      33,
+      26489,
+      33,
+      9088,
+      33,
+      8604,
+      21,
+      20,
+      2546,
+      943,
+      2352,
+      1822,
+      14660,
+      21,
+      20,
+      2546,
+      943,
+      7296,
+      1822,
+      5700,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "e6dbb45b8f81c5b8411ed2d4c6066e019c6419b59a08d4b9a0db2b9c91dfcf59",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 941,
+    "padded_input_tokens": 1080,
+    "output_tokens": 39,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 1.082202352249998,
+    "batch_latency_sec": 12.986428226999976,
+    "preparation_sec": 0.05986309700000447,
+    "batch_tokens_per_sec": 39.65678560709,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.7896223068237305,
+    "memory_reserved_gb_after_generation": 6.83203125,
+    "peak_memory_allocated_gb": 6.519719123840332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:24:57.345267+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 39,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  }
+]

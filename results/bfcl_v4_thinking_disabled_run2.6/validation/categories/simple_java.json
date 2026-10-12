@@ -1,0 +1,390 @@
+[
+  {
+    "id": "simple_java_0",
+    "category": "simple_java",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"GeometryPresentation.createPresentation\", \"description\": \"Initializes the GIS geometry presentation within the provided UI composite, using the given result set controller.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"controller\": {\"type\": \"any\", \"description\": \"The IResultSetController instance responsible for controlling the result set.\"}, \"parent\": {\"type\": \"any\", \"description\": \"The Composite UI element where the GIS presentation will be displayed.\"}}, \"required\": [\"controller\", \"parent\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nHelp me initialize the GIS geometry presentation in a user interface, providing a specific result set controller `mapController` and a composite UI element `mapArea` to display the GIS data?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "simple_java_0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Help me initialize the GIS geometry presentation in a user interface, providing a specific result set controller `mapController` and a composite UI element `mapArea` to display the GIS data?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "GeometryPresentation.createPresentation",
+          "description": "Initializes the GIS geometry presentation within the provided UI composite, using the given result set controller.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "controller": {
+                "type": "any",
+                "description": "The IResultSetController instance responsible for controlling the result set."
+              },
+              "parent": {
+                "type": "any",
+                "description": "The Composite UI element where the GIS presentation will be displayed."
+              }
+            },
+            "required": [
+              "controller",
+              "parent"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"GeometryPresentation.createPresentation\"><param name=\"controller\">mapController</param><param name=\"parent\">mapArea</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      57192,
+      43826,
+      355,
+      14383,
+      43826,
+      355,
+      1822,
+      20,
+      2546,
+      943,
+      62061,
+      1822,
+      6500,
+      29372,
+      21,
+      20,
+      2546,
+      943,
+      12208,
+      1822,
+      6500,
+      30545,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "1484959cb00ca5427561af64d9e51be502745126087c3f872cbdd0c52345fe61",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 889,
+    "padded_input_tokens": 936,
+    "output_tokens": 28,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 3.6652951963333322,
+    "batch_latency_sec": 43.98354235599999,
+    "preparation_sec": 0.02745452600004228,
+    "batch_tokens_per_sec": 15.528535525216263,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.789702892303467,
+    "memory_reserved_gb_after_generation": 6.833984375,
+    "peak_memory_allocated_gb": 6.283635139465332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:25:41.364407+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 28,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "simple_java_1",
+    "category": "simple_java",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"SQLCompletionAnalyzer.makeProposalsFromObject\", \"description\": \"Generates SQL completion proposals based on the given database object, name preference, and additional parameters.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"object\": {\"type\": \"any\", \"description\": \"The database object for which to generate proposals.\"}, \"useShortName\": {\"type\": \"boolean\", \"description\": \"Indicates whether to use short names for the proposals.\"}, \"params\": {\"type\": \"HashMap\", \"description\": \"A map of additional parameters to customize the proposals.\"}}, \"required\": [\"object\", \"useShortName\", \"params\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nHelp me generate SQL completion proposals for a table named 'Customers' in a database, considering that I prefer using short names and the additional parameters include a limit of '50' and a schema filter set to 'public'?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "simple_java_1",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Help me generate SQL completion proposals for a table named 'Customers' in a database, considering that I prefer using short names and the additional parameters include a limit of '50' and a schema filter set to 'public'?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "SQLCompletionAnalyzer.makeProposalsFromObject",
+          "description": "Generates SQL completion proposals based on the given database object, name preference, and additional parameters.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "object": {
+                "type": "any",
+                "description": "The database object for which to generate proposals."
+              },
+              "useShortName": {
+                "type": "boolean",
+                "description": "Indicates whether to use short names for the proposals."
+              },
+              "params": {
+                "type": "HashMap",
+                "description": "A map of additional parameters to customize the proposals."
+              }
+            },
+            "required": [
+              "object",
+              "useShortName",
+              "params"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"SQLCompletionAnalyzer.makeProposalsFromObject\"><param name=\"object\">Customers</param><param name=\"useShortName\">True</param><param name=\"params\">{\"limit\": \"50\", \"schema\": \"public\"}</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      36900,
+      2772,
+      335,
+      26126,
+      61857,
+      9328,
+      34249,
+      2465,
+      92562,
+      6700,
+      7711,
+      1822,
+      20,
+      2546,
+      943,
+      9242,
+      1822,
+      46359,
+      450,
+      21,
+      20,
+      2546,
+      943,
+      2173,
+      30942,
+      6203,
+      1822,
+      9390,
+      21,
+      20,
+      2546,
+      943,
+      22077,
+      1822,
+      4945,
+      53019,
+      977,
+      458,
+      1010,
+      923,
+      458,
+      47882,
+      977,
+      458,
+      12243,
+      11395,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "04ad6f3d454afbd1e91c61770acb0167ab9cd9f8ffdceeaa881ff7accb781116",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 929,
+    "padded_input_tokens": 936,
+    "output_tokens": 52,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 3.6652951963333322,
+    "batch_latency_sec": 43.98354235599999,
+    "preparation_sec": 0.02745452600004228,
+    "batch_tokens_per_sec": 15.528535525216263,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.789702892303467,
+    "memory_reserved_gb_after_generation": 6.833984375,
+    "peak_memory_allocated_gb": 6.283635139465332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:25:41.361520+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 52,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "simple_java_2",
+    "category": "simple_java",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"FireBirdUtils.getViewSourceWithHeader\", \"description\": \"Generates the SQL script to create or alter a Firebird database view, including the view definition header, based on the server version and the provided source.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"monitor\": {\"type\": \"any\", \"description\": \"The DBRProgressMonitor to monitor the progress of the operation.\"}, \"view\": {\"type\": \"any\", \"description\": \"The GenericTableBase object representing the view.\"}, \"source\": {\"type\": \"string\", \"description\": \"The SQL source code of the view.\"}}, \"required\": [\"monitor\", \"view\", \"source\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nHelp me generate the full SQL creation script with a header for a Firebird database view named 'EmployeeView', using a progress monitor `dbMonitor` and the original source 'SELECT * FROM Employee WHERE status = 'active''?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "simple_java_2",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Help me generate the full SQL creation script with a header for a Firebird database view named 'EmployeeView', using a progress monitor `dbMonitor` and the original source 'SELECT * FROM Employee WHERE status = 'active''?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "FireBirdUtils.getViewSourceWithHeader",
+          "description": "Generates the SQL script to create or alter a Firebird database view, including the view definition header, based on the server version and the provided source.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "monitor": {
+                "type": "any",
+                "description": "The DBRProgressMonitor to monitor the progress of the operation."
+              },
+              "view": {
+                "type": "any",
+                "description": "The GenericTableBase object representing the view."
+              },
+              "source": {
+                "type": "String",
+                "description": "The SQL source code of the view."
+              }
+            },
+            "required": [
+              "monitor",
+              "view",
+              "source"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"FireBirdUtils.getViewSourceWithHeader\"><param name=\"monitor\">dbMonitor</param><param name=\"view\">EmployeeView</param><param name=\"source\">SELECT * FROM Employee WHERE status = 'active''</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      42347,
+      89217,
+      63266,
+      4269,
+      9931,
+      12655,
+      5310,
+      44202,
+      1822,
+      20,
+      2546,
+      943,
+      116952,
+      1822,
+      10183,
+      120544,
+      21,
+      20,
+      2546,
+      943,
+      1938,
+      1822,
+      86340,
+      9931,
+      21,
+      20,
+      2546,
+      943,
+      19072,
+      1822,
+      45868,
+      1101,
+      20803,
+      56937,
+      46742,
+      6198,
+      483,
+      495,
+      6581,
+      18394,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "39d7f60e682c8af230797b96675cedf7877d36788746861427993a67703c112c",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 934,
+    "padded_input_tokens": 1080,
+    "output_tokens": 46,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 1.082202352249998,
+    "batch_latency_sec": 12.986428226999976,
+    "preparation_sec": 0.05986309700000447,
+    "batch_tokens_per_sec": 39.65678560709,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.7896223068237305,
+    "memory_reserved_gb_after_generation": 6.83203125,
+    "peak_memory_allocated_gb": 6.519719123840332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:24:57.345752+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 46,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  }
+]

@@ -1,0 +1,461 @@
+[
+  {
+    "id": "multiple_0",
+    "category": "multiple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"triangle_properties.get\", \"description\": \"Retrieve the dimensions, such as area and perimeter, of a triangle if lengths of three sides are given.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"side1\": {\"type\": \"integer\", \"description\": \"The length of first side of the triangle.\"}, \"side2\": {\"type\": \"integer\", \"description\": \"The length of second side of the triangle.\"}, \"side3\": {\"type\": \"integer\", \"description\": \"The length of third side of the triangle.\"}, \"get_area\": {\"type\": \"boolean\", \"description\": \"A flag to determine whether to calculate the area of triangle. Default is true.\", \"default\": true, \"optional\": true}, \"get_perimeter\": {\"type\": \"boolean\", \"description\": \"A flag to determine whether to calculate the perimeter of triangle. Default is true.\", \"default\": true, \"optional\": true}, \"get_angles\": {\"type\": \"boolean\", \"description\": \"A flag to determine whether to calculate the internal angles of triangle. Default is true.\", \"default\": true, \"optional\": true}}, \"required\": [\"side1\", \"side2\", \"side3\"]}}}\n{\"type\": \"function\", \"function\": {\"name\": \"circle_properties.get\", \"description\": \"Retrieve the dimensions, such as area and circumference, of a circle if radius is given.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"radius\": {\"type\": \"number\", \"description\": \"The length of radius of the circle.\"}, \"get_area\": {\"type\": \"boolean\", \"description\": \"A flag to determine whether to calculate the area of circle. Default is true.\", \"default\": true, \"optional\": true}, \"get_circumference\": {\"type\": \"boolean\", \"description\": \"A flag to determine whether to calculate the circumference of circle. Default is true.\", \"default\": true, \"optional\": true}}, \"required\": [\"radius\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nCan I find the dimensions and properties of a triangle, if I know its three sides are 5 units, 4 units and 3 units long?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "multiple_0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Can I find the dimensions and properties of a triangle, if I know its three sides are 5 units, 4 units and 3 units long?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "triangle_properties.get",
+          "description": "Retrieve the dimensions, such as area and perimeter, of a triangle if lengths of three sides are given.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "side1": {
+                "type": "integer",
+                "description": "The length of first side of the triangle."
+              },
+              "side2": {
+                "type": "integer",
+                "description": "The length of second side of the triangle."
+              },
+              "side3": {
+                "type": "integer",
+                "description": "The length of third side of the triangle."
+              },
+              "get_area": {
+                "type": "boolean",
+                "description": "A flag to determine whether to calculate the area of triangle. Default is true.",
+                "default": true,
+                "optional": true
+              },
+              "get_perimeter": {
+                "type": "boolean",
+                "description": "A flag to determine whether to calculate the perimeter of triangle. Default is true.",
+                "default": true,
+                "optional": true
+              },
+              "get_angles": {
+                "type": "boolean",
+                "description": "A flag to determine whether to calculate the internal angles of triangle. Default is true.",
+                "default": true,
+                "optional": true
+              }
+            },
+            "required": [
+              "side1",
+              "side2",
+              "side3"
+            ]
+          }
+        },
+        {
+          "name": "circle_properties.get",
+          "description": "Retrieve the dimensions, such as area and circumference, of a circle if radius is given.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "radius": {
+                "type": "float",
+                "description": "The length of radius of the circle."
+              },
+              "get_area": {
+                "type": "boolean",
+                "description": "A flag to determine whether to calculate the area of circle. Default is true.",
+                "default": true,
+                "optional": true
+              },
+              "get_circumference": {
+                "type": "boolean",
+                "description": "A flag to determine whether to calculate the circumference of circle. Default is true.",
+                "default": true,
+                "optional": true
+              }
+            },
+            "required": [
+              "radius"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"triangle_properties.get\"><param name=\"side1\">5</param><param name=\"side2\">4</param><param name=\"side3\">3</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      17403,
+      18740,
+      14053,
+      4269,
+      1822,
+      20,
+      2546,
+      943,
+      3115,
+      38,
+      1822,
+      42,
+      21,
+      20,
+      2546,
+      943,
+      3115,
+      39,
+      1822,
+      41,
+      21,
+      20,
+      2546,
+      943,
+      3115,
+      40,
+      1822,
+      40,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "25f9729e6c6f27fd344d7eaf7e94e7d56524af2c72afe520b53c631f537e3a54",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 1196,
+    "padded_input_tokens": 1968,
+    "output_tokens": 34,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 4.826281267333333,
+    "batch_latency_sec": 57.915375208,
+    "preparation_sec": 0.07395233600004758,
+    "batch_tokens_per_sec": 15.781646872137449,
+    "device": "cuda:0",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.789877891540527,
+    "memory_reserved_gb_after_generation": 8.525390625,
+    "peak_memory_allocated_gb": 7.955920219421387,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:25:42.276774+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 34,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:0"
+      }
+    ]
+  },
+  {
+    "id": "multiple_1",
+    "category": "multiple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"math.triangle_area_heron\", \"description\": \"Calculates the area of a triangle using Heron's formula, given the lengths of its three sides.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"side1\": {\"type\": \"integer\", \"description\": \"Length of the first side of the triangle.\"}, \"side2\": {\"type\": \"integer\", \"description\": \"Length of the second side of the triangle.\"}, \"side3\": {\"type\": \"integer\", \"description\": \"Length of the third side of the triangle.\"}}, \"required\": [\"side1\", \"side2\", \"side3\"]}}}\n{\"type\": \"function\", \"function\": {\"name\": \"math.circle_area\", \"description\": \"Calculates the area of a circle given its radius.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"radius\": {\"type\": \"number\", \"description\": \"The radius of the circle.\"}}, \"required\": [\"radius\"]}}}\n{\"type\": \"function\", \"function\": {\"name\": \"math.triangle_area_base_height\", \"description\": \"Calculates the area of a triangle using the formula (1/2)base*height.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"base\": {\"type\": \"number\", \"description\": \"The base length of the triangle.\"}, \"height\": {\"type\": \"number\", \"description\": \"The height of the triangle.\"}}, \"required\": [\"base\", \"height\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nCalculate the area of a triangle, given the lengths of its three sides: 3, 4, and 5.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "multiple_1",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Calculate the area of a triangle, given the lengths of its three sides: 3, 4, and 5."
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "math.triangle_area_heron",
+          "description": "Calculates the area of a triangle using Heron's formula, given the lengths of its three sides.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "side1": {
+                "type": "integer",
+                "description": "Length of the first side of the triangle."
+              },
+              "side2": {
+                "type": "integer",
+                "description": "Length of the second side of the triangle."
+              },
+              "side3": {
+                "type": "integer",
+                "description": "Length of the third side of the triangle."
+              }
+            },
+            "required": [
+              "side1",
+              "side2",
+              "side3"
+            ]
+          }
+        },
+        {
+          "name": "math.circle_area",
+          "description": "Calculates the area of a circle given its radius.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "radius": {
+                "type": "float",
+                "description": "The radius of the circle."
+              }
+            },
+            "required": [
+              "radius"
+            ]
+          }
+        },
+        {
+          "name": "math.triangle_area_base_height",
+          "description": "Calculates the area of a triangle using the formula (1/2)base*height.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "base": {
+                "type": "float",
+                "description": "The base length of the triangle."
+              },
+              "height": {
+                "type": "float",
+                "description": "The height of the triangle."
+              }
+            },
+            "required": [
+              "base",
+              "height"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"math.triangle_area_heron\"><param name=\"side1\">3</param><param name=\"side2\">4</param><param name=\"side3\">5</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      466,
+      73794,
+      83244,
+      84,
+      423,
+      283,
+      1822,
+      20,
+      2546,
+      943,
+      3115,
+      38,
+      1822,
+      40,
+      21,
+      20,
+      2546,
+      943,
+      3115,
+      39,
+      1822,
+      41,
+      21,
+      20,
+      2546,
+      943,
+      3115,
+      40,
+      1822,
+      42,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "99999b2c86dbd3401d4434cfd72a55276a342cb085e94123b9b293cd0735a3d8",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 1079,
+    "padded_input_tokens": 1080,
+    "output_tokens": 36,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 1.082202352249998,
+    "batch_latency_sec": 12.986428226999976,
+    "preparation_sec": 0.05986309700000447,
+    "batch_tokens_per_sec": 39.65678560709,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.7896223068237305,
+    "memory_reserved_gb_after_generation": 6.83203125,
+    "peak_memory_allocated_gb": 6.519719123840332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:24:57.341221+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 36,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "multiple_2",
+    "category": "multiple",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"country_info.largest_city\", \"description\": \"Fetch the largest city of a specified country.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"country\": {\"type\": \"string\", \"description\": \"Name of the country.\"}}, \"required\": [\"country\"]}}}\n{\"type\": \"function\", \"function\": {\"name\": \"country_info.capital\", \"description\": \"Fetch the capital city of a specified country.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"country\": {\"type\": \"string\", \"description\": \"Name of the country.\"}}, \"required\": [\"country\"]}}}\n{\"type\": \"function\", \"function\": {\"name\": \"country_info.population\", \"description\": \"Fetch the current population of a specified country.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"country\": {\"type\": \"string\", \"description\": \"Name of the country.\"}}, \"required\": [\"country\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nWhat is the capital of Brazil?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "multiple_2",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What is the capital of Brazil?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "country_info.largest_city",
+          "description": "Fetch the largest city of a specified country.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Name of the country."
+              }
+            },
+            "required": [
+              "country"
+            ]
+          }
+        },
+        {
+          "name": "country_info.capital",
+          "description": "Fetch the capital city of a specified country.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Name of the country."
+              }
+            },
+            "required": [
+              "country"
+            ]
+          }
+        },
+        {
+          "name": "country_info.population",
+          "description": "Fetch the current population of a specified country.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "country": {
+                "type": "string",
+                "description": "Name of the country."
+              }
+            },
+            "required": [
+              "country"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"country_info.capital\"><param name=\"country\">Brazil</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      27100,
+      35857,
+      2684,
+      65053,
+      1822,
+      20,
+      2546,
+      943,
+      27100,
+      1822,
+      71433,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "aa7600c3f77a0ce2a6e1812561b5d83867b84dbb4454695ae28f6e6eab341f1b",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 952,
+    "padded_input_tokens": 1080,
+    "output_tokens": 17,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 1.082202352249998,
+    "batch_latency_sec": 12.986428226999976,
+    "preparation_sec": 0.05986309700000447,
+    "batch_tokens_per_sec": 39.65678560709,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.7896223068237305,
+    "memory_reserved_gb_after_generation": 6.83203125,
+    "peak_memory_allocated_gb": 6.519719123840332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:24:57.343571+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 17,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  }
+]

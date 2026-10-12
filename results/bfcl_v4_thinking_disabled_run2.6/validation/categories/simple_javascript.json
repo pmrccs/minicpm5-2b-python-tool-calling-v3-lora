@@ -1,0 +1,387 @@
+[
+  {
+    "id": "simple_javascript_0",
+    "category": "simple_javascript",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"validateUserInput\", \"description\": \"This function is called after a user has finished typing in a form field, to validate the input provided.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"inputField\": {\"type\": \"string\", \"description\": \"The form field whose input needs to be validated.\"}, \"isComplete\": {\"type\": \"boolean\", \"description\": \"Indicates if the user has finished typing in the input field.\"}}, \"required\": [\"inputField\", \"isComplete\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nHelp me validate user input in a form field with the ID 'userInputField' after the user has finished typing?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "simple_javascript_0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Help me validate user input in a form field with the ID 'userInputField' after the user has finished typing?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "validateUserInput",
+          "description": "This function is called after a user has finished typing in a form field, to validate the input provided.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "inputField": {
+                "type": "String",
+                "description": "The form field whose input needs to be validated."
+              },
+              "isComplete": {
+                "type": "Boolean",
+                "description": "Indicates if the user has finished typing in the input field."
+              }
+            },
+            "required": [
+              "inputField",
+              "isComplete"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"validateUserInput\"><param name=\"inputField\">userInputField</param><param name=\"isComplete\">True</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      28642,
+      16898,
+      22628,
+      1822,
+      20,
+      2546,
+      943,
+      8920,
+      21563,
+      1822,
+      8448,
+      22628,
+      21563,
+      21,
+      20,
+      2546,
+      943,
+      293,
+      45215,
+      1822,
+      9390,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "2813ac56c1f774485506006f3f0b9f64b87caa4049169dbcb35d105517a1525d",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 877,
+    "padded_input_tokens": 936,
+    "output_tokens": 27,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 3.6652951963333322,
+    "batch_latency_sec": 43.98354235599999,
+    "preparation_sec": 0.02745452600004228,
+    "batch_tokens_per_sec": 15.528535525216263,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.789702892303467,
+    "memory_reserved_gb_after_generation": 6.833984375,
+    "peak_memory_allocated_gb": 6.283635139465332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:25:41.366066+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 27,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "simple_javascript_1",
+    "category": "simple_javascript",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"getActiveDataEntries\", \"description\": \"This function extracts data entries from a list element based on a specified attribute and its value. It checks for the presence of the 'data-active' attribute and whether it is set to true.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"listElement\": {\"type\": \"any\", \"description\": \"The list element from which to extract active data entries.\"}, \"attribute\": {\"type\": \"string\", \"description\": \"The data attribute used to filter entries. Optional parameter with a default value of 'data-active'.\", \"default\": \"data-active\"}, \"value\": {\"type\": \"boolean\", \"description\": \"The value of the attribute to match. Optional parameter with a default value of true.\", \"default\": true}}, \"required\": [\"listElement\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nHelp me extract all data entries with the attribute 'data-active' set to true from a list element stored in a variable named 'listElement'?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "simple_javascript_1",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Help me extract all data entries with the attribute 'data-active' set to true from a list element stored in a variable named 'listElement'?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "getActiveDataEntries",
+          "description": "This function extracts data entries from a list element based on a specified attribute and its value. It checks for the presence of the 'data-active' attribute and whether it is set to true.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "listElement": {
+                "type": "any",
+                "description": "The list element from which to extract active data entries."
+              },
+              "attribute": {
+                "type": "String",
+                "description": "The data attribute used to filter entries. Optional parameter with a default value of 'data-active'.",
+                "default": "data-active"
+              },
+              "value": {
+                "type": "Boolean",
+                "description": "The value of the attribute to match. Optional parameter with a default value of true.",
+                "default": true
+              }
+            },
+            "required": [
+              "listElement"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"getActiveDataEntries\"><param name=\"listElement\">listElement</param><param name=\"attribute\">data-active</param><param name=\"value\">true</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      33101,
+      5946,
+      113516,
+      1822,
+      20,
+      2546,
+      943,
+      10924,
+      15291,
+      1822,
+      10924,
+      15291,
+      21,
+      20,
+      2546,
+      943,
+      41657,
+      1822,
+      2134,
+      65209,
+      21,
+      20,
+      2546,
+      943,
+      3971,
+      1822,
+      11550,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "0ee8373f838b0cebe7a63b41313534f9b96fcd368ab54866c07f797188133ded",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 944,
+    "padded_input_tokens": 1080,
+    "output_tokens": 34,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 1.082202352249998,
+    "batch_latency_sec": 12.986428226999976,
+    "preparation_sec": 0.05986309700000447,
+    "batch_tokens_per_sec": 39.65678560709,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.7896223068237305,
+    "memory_reserved_gb_after_generation": 6.83203125,
+    "peak_memory_allocated_gb": 6.519719123840332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:24:57.344331+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 34,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "simple_javascript_2",
+    "category": "simple_javascript",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"extractLastTransactionId\", \"description\": \"This function scans a database log file for lines indicating transaction completion or failure, extracting the last transaction ID that matches the criteria. It uses a processing function `processFunction` to further handle the extracted transaction ID.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"filepath\": {\"type\": \"string\", \"description\": \"The path to the database log file to be examined.\"}, \"status\": {\"type\": \"array\", \"items\": {\"type\": \"string\"}, \"description\": \"An array of statuses to search for within the log file, indicating the end of a transaction.\"}, \"encoding\": {\"type\": \"string\", \"description\": \"The encoding of the log file.\"}, \"processFunction\": {\"type\": \"any\", \"description\": \"A function that processes the extracted transaction ID.\"}}, \"required\": [\"filepath\", \"status\", \"encoding\", \"processFunction\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nHelp me extract the last transaction ID that has a status of 'completed' or 'failed' from a database log located at '/var/log/db.log', using 'utf-8' encoding, and process the information with a processing function?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "simple_javascript_2",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Help me extract the last transaction ID that has a status of 'completed' or 'failed' from a database log located at '/var/log/db.log', using 'utf-8' encoding, and process the information with a processing function?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "extractLastTransactionId",
+          "description": "This function scans a database log file for lines indicating transaction completion or failure, extracting the last transaction ID that matches the criteria. It uses a processing function `processFunction` to further handle the extracted transaction ID.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "filepath": {
+                "type": "String",
+                "description": "The path to the database log file to be examined."
+              },
+              "status": {
+                "type": "array",
+                "items": {
+                  "type": "String"
+                },
+                "description": "An array of statuses to search for within the log file, indicating the end of a transaction."
+              },
+              "encoding": {
+                "type": "String",
+                "description": "The encoding of the log file."
+              },
+              "processFunction": {
+                "type": "any",
+                "description": "A function that processes the extracted transaction ID."
+              }
+            },
+            "required": [
+              "filepath",
+              "status",
+              "encoding",
+              "processFunction"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"extractLastTransactionId\"><param name=\"filepath\">/var/log/db.log</param><param name=\"status\">['completed', 'failed']</param><param name=\"encoding\">utf-8</param><param name=\"processFunction\">processTransactionId</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      113758,
+      21321,
+      64935,
+      5226,
+      1822,
+      20,
+      2546,
+      943,
+      10454,
+      7346,
+      1822,
+      36,
+      1077,
+      91502,
+      4503,
+      87,
+      16512,
+      21,
+      20,
+      2546,
+      943,
+      29619,
+      1822,
+      5360,
+      114443,
+      649,
+      495,
+      108989,
+      4831,
+      21,
+      20,
+      2546,
+      943,
+      66165,
+      1822,
+      42630,
+      34,
+      45,
+      21,
+      20,
+      2546,
+      943,
+      14164,
+      24244,
+      1822,
+      14164,
+      64935,
+      5226,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "467c6f3008912149aa408aa2344b01d493fdf7dd5c093d42cd17dd29f34c4862",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 991,
+    "padded_input_tokens": 1080,
+    "output_tokens": 54,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 1.082202352249998,
+    "batch_latency_sec": 12.986428226999976,
+    "preparation_sec": 0.05986309700000447,
+    "batch_tokens_per_sec": 39.65678560709,
+    "device": "cuda:1",
+    "batch_size": 12,
+    "memory_allocated_gb_after_generation": 4.7896223068237305,
+    "memory_reserved_gb_after_generation": 6.83203125,
+    "peak_memory_allocated_gb": 6.519719123840332,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T15:24:57.343114+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 54,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  }
+]
