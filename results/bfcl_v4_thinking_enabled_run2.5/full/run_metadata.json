@@ -38,11 +38,12 @@
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00029.jsonl",
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00030.jsonl",
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00031.jsonl",
-    "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00032.jsonl"
+    "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00032.jsonl",
+    "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00033.jsonl"
   ],
-  "checkpointed_attempt_records": 3200,
+  "checkpointed_attempt_records": 3300,
   "checkpointed_stage_attempt_counts": {
-    "512": 3200
+    "512": 3300
   },
   "created_or_resumed_utc": "2026-10-12T07:37:09.202623+00:00",
   "do_sample": false,
@@ -77,7 +78,7 @@
     "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
     "torch": "2.11.0+cu128"
   },
-  "last_updated_utc": "2026-10-12T11:42:08.139263+00:00",
+  "last_updated_utc": "2026-10-12T11:49:37.695182+00:00",
   "lora_adapter": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
   "output_folder_name": "bfcl_v4_thinking_enabled_run2.5",
   "package_versions": {
