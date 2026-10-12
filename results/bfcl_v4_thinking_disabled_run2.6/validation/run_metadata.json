@@ -1,4 +1,6 @@
 {
+  "all_attempt_record_count": 39,
+  "all_attempts_journal": "attempt_journal.jsonl",
   "attempt_token_ids_saved": true,
   "base_model": "openbmb/MiniCPM5-2B",
   "batch_size_pilot_enabled": true,
@@ -6,25 +8,190 @@
   "bfcl_repo": "https://github.com/ShishirPatil/gorilla",
   "cache_enabled": true,
   "checkpoint_policy": "immutable JSONL shards around every 100 completed attempts; final remainder committed at each stage boundary",
-  "checkpoint_shards": [
-    "results/bfcl_v4_thinking_disabled_run2.6/validation/attempts/stage_512/shard_00001.jsonl"
-  ],
-  "checkpointed_attempt_records": 39,
-  "checkpointed_stage_attempt_counts": {
-    "512": 39
-  },
   "created_or_resumed_utc": "2026-10-12T15:23:22.067941+00:00",
   "do_sample": false,
+  "elapsed_generation_pipeline_sec_this_session": 72.624545227,
   "enable_thinking": false,
+  "final_attempt_stage_counts": {
+    "512": 39
+  },
+  "final_category_counts": {
+    "irrelevance": 3,
+    "live_irrelevance": 3,
+    "live_multiple": 3,
+    "live_parallel": 3,
+    "live_parallel_multiple": 3,
+    "live_relevance": 3,
+    "live_simple": 3,
+    "multiple": 3,
+    "parallel": 3,
+    "parallel_multiple": 3,
+    "simple_java": 3,
+    "simple_javascript": 3,
+    "simple_python": 3
+  },
+  "final_generation_errors": 0,
+  "final_raw_jsonl": "bfcl_native_raw_generations.jsonl",
+  "final_record_count": 39,
+  "final_records_still_at_token_limit": 0,
+  "finalized_utc": "2026-10-12T15:25:56.888123+00:00",
   "generation_dtype": "torch.float16",
   "github_branch": "main",
   "github_commit_every_records": 100,
   "github_repo": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
   "github_run_path": "results/bfcl_v4_thinking_disabled_run2.6/validation",
+  "github_sync_error": null,
+  "github_sync_pending": false,
   "gpu_devices": [
     "cuda:0",
     "cuda:1"
   ],
+  "gpu_monitor_samples": {
+    "0": [
+      {
+        "memory_used_mb": 8309.0,
+        "timestamp": 1791818689.3086293,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 8863.0,
+        "timestamp": 1791818694.3542492,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818699.4083624,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818704.454821,
+        "utilization_pct": 87.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818709.499737,
+        "utilization_pct": 88.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818714.5460107,
+        "utilization_pct": 94.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818719.5891356,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818724.6350653,
+        "utilization_pct": 84.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818729.681101,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818734.7200692,
+        "utilization_pct": 91.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818739.7592254,
+        "utilization_pct": 97.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818744.797836,
+        "utilization_pct": 0.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818749.8356483,
+        "utilization_pct": 0.0
+      },
+      {
+        "memory_used_mb": 8865.0,
+        "timestamp": 1791818754.8742273,
+        "utilization_pct": 0.0
+      }
+    ],
+    "1": [
+      {
+        "memory_used_mb": 7131.0,
+        "timestamp": 1791818689.3086293,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 7131.0,
+        "timestamp": 1791818694.3542492,
+        "utilization_pct": 95.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818699.4083624,
+        "utilization_pct": 100.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818704.454821,
+        "utilization_pct": 51.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818709.499737,
+        "utilization_pct": 50.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818714.5460107,
+        "utilization_pct": 52.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818719.5891356,
+        "utilization_pct": 53.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818724.6350653,
+        "utilization_pct": 51.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818729.681101,
+        "utilization_pct": 59.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818734.7200692,
+        "utilization_pct": 57.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818739.7592254,
+        "utilization_pct": 56.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818744.797836,
+        "utilization_pct": 49.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818749.8356483,
+        "utilization_pct": 51.0
+      },
+      {
+        "memory_used_mb": 7133.0,
+        "timestamp": 1791818754.8742273,
+        "utilization_pct": 0.0
+      }
+    ]
+  },
   "hardware_and_runtime": {
     "cuda_runtime": "12.8",
     "gpus": [
@@ -46,7 +213,6 @@
     "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
     "torch": "2.11.0+cu128"
   },
-  "last_updated_utc": "2026-10-12T15:25:52.889167+00:00",
   "lora_adapter": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
   "output_folder_name": "bfcl_v4_thinking_disabled_run2.6",
   "package_versions": {
