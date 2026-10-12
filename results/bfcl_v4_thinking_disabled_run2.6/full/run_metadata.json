@@ -1,0 +1,229 @@
+{
+  "attempt_token_ids_saved": true,
+  "base_model": "openbmb/MiniCPM5-2B",
+  "batch_size_pilot_enabled": true,
+  "bfcl_commit": "f7cf7359b7ac615a0b294831c5ba2bc95ee4a000",
+  "bfcl_repo": "https://github.com/ShishirPatil/gorilla",
+  "cache_enabled": true,
+  "checkpoint_policy": "immutable JSONL shards around every 100 completed attempts; final remainder committed at each stage boundary",
+  "created_or_resumed_utc": "2026-10-12T16:03:35.881047+00:00",
+  "do_sample": false,
+  "enable_thinking": false,
+  "generation_dtype": "torch.float16",
+  "github_branch": "main",
+  "github_commit_every_records": 100,
+  "github_repo": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
+  "github_run_path": "results/bfcl_v4_thinking_disabled_run2.6/full",
+  "gpu_devices": [
+    "cuda:0",
+    "cuda:1"
+  ],
+  "hardware_and_runtime": {
+    "cuda_runtime": "12.8",
+    "gpus": [
+      {
+        "index": 0,
+        "major": 7,
+        "minor": 5,
+        "name": "Tesla T4",
+        "total_memory_bytes": 15636037632
+      },
+      {
+        "index": 1,
+        "major": 7,
+        "minor": 5,
+        "name": "Tesla T4",
+        "total_memory_bytes": 15636037632
+      }
+    ],
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "torch": "2.11.0+cu128"
+  },
+  "lora_adapter": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
+  "output_folder_name": "bfcl_v4_thinking_disabled_run2.6",
+  "package_versions": {
+    "accelerate": "1.10.1",
+    "huggingface_hub": "0.36.2",
+    "peft": "0.21.0",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.22.2",
+    "transformers": "4.57.6"
+  },
+  "pilot_batch_sizes": [
+    1,
+    2,
+    4,
+    8,
+    12
+  ],
+  "pilot_max_new_tokens": 128,
+  "pilot_metrics": null,
+  "prompt_integrity_summary": {
+    "irrelevance": {
+      "samples": 240,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 240
+      },
+      "unique_rendered_prompt_hashes": 240
+    },
+    "live_irrelevance": {
+      "samples": 884,
+      "system_prompt_hash_counts": {
+        "0f92c4e70492c63e494926b4b37dae560497ba8ceb08717409f5cbc5cd3dc7ef": 1,
+        "132f31f3b5e87835948b843813dce5a06d1cdf40259a16cb6fc6f1f051c1a18d": 1,
+        "160aca0cba79e0ca6d0b50a39fc82e8d1bd870e7e2b1cf3e823130e8dc92555c": 1,
+        "1df83a706ee0408a99da7a1e5ebba0fc0c657a062b1a594632fd629d89f82354": 1,
+        "3163c5fe9ee72308290fadc7c306d9524d30d9c0158069b31052f3ea5324e9a6": 4,
+        "50169717dd0eaba5f23c27238b7bbc2258f8df8cf6cdcf07990e7408cc4f98cb": 2,
+        "50b6c07bd9d79925e560e3ef193e3be98160a4520bc5b2767e82e0cd42ed43bc": 1,
+        "7a3cac6c9e4f8d54d5589dc6ae4c3fd065ce45396d27092c0b2a01fe7d3d8f33": 8,
+        "825a0b8cffe599cf698c0fecd931ca2722d143c04c337133c1fcd646b1425af1": 1,
+        "85ea13a1adc6bd3672ebaee16646c22250a466955a669f2e2dbfa93558f4df2a": 1,
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 842,
+        "b436e8db68f28afa7d26e9e8646b920c6d5d4b5ae21aaf0c9066b9471a028ac8": 1,
+        "f83311d2b663291bab4c26d936f062d993c02d27f2ecae7812b676acf4e8629c": 1,
+        "fd8082ce4746c9607cf9ab157d52563667024116a1cc3124336b751431672f68": 1,
+        "fe3d3b2a7b046123c11d73ad55b86b587dade942fd3e61c23c4d1684a9c5c2c2": 12,
+        "fe826bacf63c150f33de445acf89c1e64190f30296ab540bea9ddaf0a869b316": 6
+      },
+      "unique_rendered_prompt_hashes": 881
+    },
+    "live_multiple": {
+      "samples": 1053,
+      "system_prompt_hash_counts": {
+        "0f92c4e70492c63e494926b4b37dae560497ba8ceb08717409f5cbc5cd3dc7ef": 1,
+        "132f31f3b5e87835948b843813dce5a06d1cdf40259a16cb6fc6f1f051c1a18d": 1,
+        "18daa1cba3b39a0ce4fcbeefe0dca8bc947016cd9d27d44b9b2439c10312b184": 1,
+        "214c22f6b4e7a4ea69dc83b9e01098a8446b7f82e6109ecd758ef7e29afa18b7": 1,
+        "2fd1eb3fd47b58fc47bc6d3b47a3f7215ff206f02f80814097522c9788d88fd2": 1,
+        "3163c5fe9ee72308290fadc7c306d9524d30d9c0158069b31052f3ea5324e9a6": 6,
+        "4560670118ef3c51f8bf80e65459ec39dea5ab412dfa4e6db990ca99f91f3912": 1,
+        "704f994be8e594cfa2a6f02c266fbadc59e81fd25788a6377b0bc099b1010a3f": 1,
+        "7330604da029c8ada17e57154ad234787a0feadeec183c4b78674a088166e60f": 2,
+        "7a3cac6c9e4f8d54d5589dc6ae4c3fd065ce45396d27092c0b2a01fe7d3d8f33": 3,
+        "83bb8aef6dcbfa153ecc80f42b9a1310b50a8ffcfe563b71ed850371240b6ce3": 1,
+        "8e3774de6ef7f2d434453f0a248240127e482e4cd12888cbb086782c33807f4e": 1,
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 1016,
+        "bb249806bfa595f8cc2b055d7c5592c7c34989fd97c32c9525f439fd68f32fe0": 1,
+        "d0e3cbc0d7dc13d1aac521e119e94e04faaba74748a0a2200e902e0897fb647a": 1,
+        "ddf987bb6dfaf58954e7057fcd2da19d50870983db968685ac49dee622df65b7": 1,
+        "ef0a3b46dc5156d1f77aaaefddacd808f8e066f3cecf2a8721b5727a1a71508b": 1,
+        "ef2197c33a8898849aa6ee40764669e32b102010b84581b1f9073c4866d1b515": 1,
+        "fe3d3b2a7b046123c11d73ad55b86b587dade942fd3e61c23c4d1684a9c5c2c2": 5,
+        "fe826bacf63c150f33de445acf89c1e64190f30296ab540bea9ddaf0a869b316": 7
+      },
+      "unique_rendered_prompt_hashes": 1053
+    },
+    "live_parallel": {
+      "samples": 16,
+      "system_prompt_hash_counts": {
+        "7c867750ddc5163c40714ef4bfaaf3b13517516c156d0b29674379ad8c0c31b4": 1,
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 15
+      },
+      "unique_rendered_prompt_hashes": 16
+    },
+    "live_parallel_multiple": {
+      "samples": 24,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 24
+      },
+      "unique_rendered_prompt_hashes": 24
+    },
+    "live_relevance": {
+      "samples": 16,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 15,
+        "fa46518f60846d61983a869ce4981e6389a8394fe0dd55403af1fc60b442750b": 1
+      },
+      "unique_rendered_prompt_hashes": 16
+    },
+    "live_simple": {
+      "samples": 258,
+      "system_prompt_hash_counts": {
+        "04cca6e6da23d00076c7c583eded57ee20d79367a3c098f64ae976cd8e198fd0": 2,
+        "23bc346fc12c8efc1ab47e300eb6217a6b6c58bc373d00ed3355f7b21dbd4b34": 2,
+        "4cbb048dee550b69a13f179e8a7d4a1d00fb2845131a6df901057f08d35c3c72": 1,
+        "7a3cac6c9e4f8d54d5589dc6ae4c3fd065ce45396d27092c0b2a01fe7d3d8f33": 3,
+        "7feb5814783d44f460bdf80a31f00aa47f40a0ac956c0f627aa857a9cdcf90db": 1,
+        "8647bbe931ea8688a9d616de65da6f1af7c36b0fce8938ce6061bd5ffb754745": 1,
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 247,
+        "fe3d3b2a7b046123c11d73ad55b86b587dade942fd3e61c23c4d1684a9c5c2c2": 1
+      },
+      "unique_rendered_prompt_hashes": 258
+    },
+    "multiple": {
+      "samples": 200,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 200
+      },
+      "unique_rendered_prompt_hashes": 200
+    },
+    "parallel": {
+      "samples": 200,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 200
+      },
+      "unique_rendered_prompt_hashes": 200
+    },
+    "parallel_multiple": {
+      "samples": 200,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 200
+      },
+      "unique_rendered_prompt_hashes": 200
+    },
+    "simple_java": {
+      "samples": 100,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 100
+      },
+      "unique_rendered_prompt_hashes": 100
+    },
+    "simple_javascript": {
+      "samples": 50,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 50
+      },
+      "unique_rendered_prompt_hashes": 50
+    },
+    "simple_python": {
+      "samples": 400,
+      "system_prompt_hash_counts": {
+        "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f": 400
+      },
+      "unique_rendered_prompt_hashes": 400
+    }
+  },
+  "records_recovered_from_local_journal": 0,
+  "records_recovered_from_remote": 0,
+  "remote_checkpoint_files_found": 0,
+  "requested_batch_size_per_gpu": 8,
+  "resume_policy": "merge private GitHub shards and local journal; deduplicate by (sample ID, effective token cap)",
+  "retry_policy": "512 -> 1024 only for hit_token_limit; 1024 -> 2048 only for hit_token_limit at 1024",
+  "run_mode_name": "full",
+  "run_signature": "029d9aee9d1c9fafab92caabbe3e34b3ce90505b400e4234ed5423ab7827a0c1",
+  "samples_per_category_test": 3,
+  "selected_batch_size_per_gpu": null,
+  "selected_category_counts": {
+    "irrelevance": 240,
+    "live_irrelevance": 884,
+    "live_multiple": 1053,
+    "live_parallel": 16,
+    "live_parallel_multiple": 24,
+    "live_relevance": 16,
+    "live_simple": 258,
+    "multiple": 200,
+    "parallel": 200,
+    "parallel_multiple": 200,
+    "simple_java": 100,
+    "simple_javascript": 50,
+    "simple_python": 400
+  },
+  "selected_samples": 3641,
+  "test_run_mode": false,
+  "token_limit_stages": [
+    512,
+    1024,
+    2048
+  ]
+}
