@@ -1,0 +1,2753 @@
+[
+  {
+    "id": "live_parallel_0-0-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather conditions for a specified city and state.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to get the weather, in the format of 'City, State', such as 'San Francisco, CA' if State for the city exists. 'City, Country' if State for the city doesn't exist.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of temperature for the weather report.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\n请问北京的当前天气状况如何？还有，上海的天气情况是怎样的？<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_0-0-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "请问北京的当前天气状况如何？还有，上海的天气情况是怎样的？"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather conditions for a specified city and state.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to get the weather, in the format of 'City, State', such as 'San Francisco, CA' if State for the city exists. 'City, Country' if State for the city doesn't exist."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of temperature for the weather report.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Beijing, China</param><param name=\"unit\">celsius</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">Shanghai, China</param><param name=\"unit\">celsius</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      110281,
+      33,
+      6168,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      88,
+      65365,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      127855,
+      33,
+      6168,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      88,
+      65365,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "31215fb2b655a8014d9fc3ba53c3f2674476a2e572bc873176a1bc72bfcc8239",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 906,
+    "padded_input_tokens": 912,
+    "output_tokens": 56,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 5.0160670129998834,
+    "batch_latency_sec": 10.032134025999767,
+    "preparation_sec": 0.007633532000909327,
+    "batch_tokens_per_sec": 10.466367347951781,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789383411407471,
+    "memory_reserved_gb_after_generation": 7.875,
+    "peak_memory_allocated_gb": 5.0338664054870605,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T18:17:36.636251+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 56,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_1-0-1",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather conditions for a specified city and state.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to get the weather, in the format of 'City, State', such as 'San Francisco, CA' if State for the city exists. 'City, Country' if State for the city doesn't exist. Use short form for state.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of temperature for the weather report.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nCould you tell me the current weather conditions for Boston, MA and also for San Francisco?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_1-0-1",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Could you tell me the current weather conditions for Boston, MA and also for San Francisco?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather conditions for a specified city and state.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to get the weather, in the format of 'City, State', such as 'San Francisco, CA' if State for the city exists. 'City, Country' if State for the city doesn't exist. Use short form for state."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of temperature for the weather report.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Boston, MA</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">San Francisco, CA</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      38879,
+      33,
+      11681,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      17913,
+      11779,
+      33,
+      9088,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "e33966fd11db5613abbb7727dc2e309c254bf86ad59a0ec42f1e2c3a463b1dff",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 914,
+    "padded_input_tokens": 920,
+    "output_tokens": 41,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 3.596840082000199,
+    "batch_latency_sec": 7.193680164000398,
+    "preparation_sec": 0.008923739999772806,
+    "batch_tokens_per_sec": 10.008785261306485,
+    "device": "cuda:0",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789383411407471,
+    "memory_reserved_gb_after_generation": 8.33984375,
+    "peak_memory_allocated_gb": 5.036712169647217,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T18:13:10.103954+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 41,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:0"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_2-0-2",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather conditions for a specified city and state.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to get the weather, in the format of 'City, State', such as 'San Francisco, CA' if State for the city exists. 'City, Country' if State for the city doesn't exist. Use short form for the state\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of temperature for the weather report.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\n<<question>> What\\'s the weather like in the two cities of Boston and San Francisco?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_2-0-2",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "<<question>> What\\'s the weather like in the two cities of Boston and San Francisco?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather conditions for a specified city and state.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to get the weather, in the format of 'City, State', such as 'San Francisco, CA' if State for the city exists. 'City, Country' if State for the city doesn't exist. Use short form for the state"
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of temperature for the weather report.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Boston, MA</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">San Francisco, CA</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      38879,
+      33,
+      11681,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      17913,
+      11779,
+      33,
+      9088,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "93dcc0bad72f72944a14a6b24fe6107b59bea7293463f7f0d95ad0ba696c159d",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 915,
+    "padded_input_tokens": 920,
+    "output_tokens": 41,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 3.527120967999963,
+    "batch_latency_sec": 7.054241935999926,
+    "preparation_sec": 0.008407313000134309,
+    "batch_tokens_per_sec": 9.63958999661969,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789383411407471,
+    "memory_reserved_gb_after_generation": 7.875,
+    "peak_memory_allocated_gb": 5.035857677459717,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T18:12:40.153026+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 41,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_3-0-3",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nEres un asistente IA. Has sido capacitado con una superinteligencia, formidable para comunicar con usuarios en español, interpretar sus necesidades y actuar a travez de ellos.\n\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather conditions for a specified city and state.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to get the weather, in the format of 'City, State', such as 'San Francisco, CA' if State for the city exists. 'City, Country' if State for the city doesn't exist. Use short form if using state name\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of temperature for the weather report.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\n¿Podrías decirme las condiciones actuales del clima en Cancún, QR, Playa del Carmen, QR y Tulum, QR?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_3-0-3",
+      "question": [
+        [
+          {
+            "role": "system",
+            "content": "Eres un asistente IA. Has sido capacitado con una superinteligencia, formidable para comunicar con usuarios en español, interpretar sus necesidades y actuar a travez de ellos."
+          },
+          {
+            "role": "user",
+            "content": "¿Podrías decirme las condiciones actuales del clima en Cancún, QR, Playa del Carmen, QR y Tulum, QR?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather conditions for a specified city and state.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to get the weather, in the format of 'City, State', such as 'San Francisco, CA' if State for the city exists. 'City, Country' if State for the city doesn't exist. Use short form if using state name"
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of temperature for the weather report.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Cancun, QR</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">Playa del Carmen, QR</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">Tulum, QR</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      56,
+      4556,
+      368,
+      33,
+      69812,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      4859,
+      16557,
+      1976,
+      63870,
+      33,
+      69812,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      73,
+      11270,
+      33,
+      69812,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "8217b56757d5329f90badf5a3d886420da433d1a89a74832d538c716f24d1148",
+    "system_prompt_sha256": "7c867750ddc5163c40714ef4bfaaf3b13517516c156d0b29674379ad8c0c31b4",
+    "input_tokens": 969,
+    "padded_input_tokens": 976,
+    "output_tokens": 66,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 5.56643459750012,
+    "batch_latency_sec": 11.13286919500024,
+    "preparation_sec": 0.007120987000234891,
+    "batch_tokens_per_sec": 11.228012995619977,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.7893877029418945,
+    "memory_reserved_gb_after_generation": 7.873046875,
+    "peak_memory_allocated_gb": 5.049802303314209,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T17:53:42.042439+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 66,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_4-1-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather information for a specified geographic location.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The geographic location for which to fetch the weather data, in the format of 'City, Country' (e.g., 'London, UK').\"}, \"url\": {\"type\": \"string\", \"description\": \"The API endpoint for fetching weather data. This should be a fully qualified URL pointing to the Open-Meteo API with the appropriate query parameters for latitude and longitude.\", \"default\": \"https://api.open-meteo.com/v1/forecast\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nCould you tell me the current weather in Boston, USA and also in San Francisco, USA?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_4-1-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Could you tell me the current weather in Boston, USA and also in San Francisco, USA?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather information for a specified geographic location.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The geographic location for which to fetch the weather data, in the format of 'City, Country' (e.g., 'London, UK')."
+              },
+              "url": {
+                "type": "string",
+                "description": "The API endpoint for fetching weather data. This should be a fully qualified URL pointing to the Open-Meteo API with the appropriate query parameters for latitude and longitude.",
+                "default": "https://api.open-meteo.com/v1/forecast"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Boston, USA</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">San Francisco, USA</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      38879,
+      33,
+      8604,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      17913,
+      11779,
+      33,
+      8604,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "c3871f39c91c71a9955384c355cbe9d9e3bfbefb54432a5c85463353ace6c851",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 913,
+    "padded_input_tokens": 920,
+    "output_tokens": 41,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 6.957622626000102,
+    "batch_latency_sec": 13.915245252000204,
+    "preparation_sec": 0.006761227999959374,
+    "batch_tokens_per_sec": 8.551771660862011,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789384365081787,
+    "memory_reserved_gb_after_generation": 7.875,
+    "peak_memory_allocated_gb": 5.035858154296875,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T18:13:36.857111+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 41,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_5-2-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather information for a specified location using the Open-Meteo API.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"url\": {\"type\": \"string\", \"description\": \"The API endpoint for fetching weather data, with a default value pointing to the Open-Meteo API service.\", \"default\": \"https://api.open-meteo.com/v1/forecast\"}, \"location\": {\"type\": \"string\", \"description\": \"The geographical location for which to retrieve weather data, in the format of 'City, State', such as 'San Francisco, CA'. If using state name, then use short form.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of measurement for temperature values.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"celsius\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nCould you tell me the current temperature in Boston, MA and San Francisco, please?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_5-2-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Could you tell me the current temperature in Boston, MA and San Francisco, please?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather information for a specified location using the Open-Meteo API.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "url": {
+                "type": "string",
+                "description": "The API endpoint for fetching weather data, with a default value pointing to the Open-Meteo API service.",
+                "default": "https://api.open-meteo.com/v1/forecast"
+              },
+              "location": {
+                "type": "string",
+                "description": "The geographical location for which to retrieve weather data, in the format of 'City, State', such as 'San Francisco, CA'. If using state name, then use short form."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of measurement for temperature values.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "celsius"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Boston, MA</param><param name=\"unit\">celsius</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">San Francisco, CA</param><param name=\"unit\">celsius</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      38879,
+      33,
+      11681,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      88,
+      65365,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      17913,
+      11779,
+      33,
+      9088,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      88,
+      65365,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "dea2b1eee4ea857b6ca3b95e920af493a90470330da4ee5446a4a5d7a7d92e2a",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 953,
+    "padded_input_tokens": 960,
+    "output_tokens": 57,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 4.837326953499996,
+    "batch_latency_sec": 9.674653906999993,
+    "preparation_sec": 0.006867989000056696,
+    "batch_tokens_per_sec": 9.81947270808972,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789385795593262,
+    "memory_reserved_gb_after_generation": 7.873046875,
+    "peak_memory_allocated_gb": 5.045816898345947,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T17:57:32.675825+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 57,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_6-3-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather conditions for a specified location.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to get the weather, in the format of 'City, State' (e.g., 'San Francisco, CA'). If city does not have a state, then just mention the name of the city.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of measurement for temperature values.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"get_snow_report\", \"description\": \"Retrieves the latest snow report for a specified location, providing details about the snow conditions and weather.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to get the snow report, in the format of 'City, State' or 'City, Country', such as 'Aspen, CO' or 'Paris, France'.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The temperature unit to be used in the snow report.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nWhat's the snow like in the two cities of Paris and Bordeaux?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_6-3-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What's the snow like in the two cities of Paris and Bordeaux?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather conditions for a specified location.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to get the weather, in the format of 'City, State' (e.g., 'San Francisco, CA'). If city does not have a state, then just mention the name of the city."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of measurement for temperature values.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_snow_report",
+          "description": "Retrieves the latest snow report for a specified location, providing details about the snow conditions and weather.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to get the snow report, in the format of 'City, State' or 'City, Country', such as 'Aspen, CO' or 'Paris, France'."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The temperature unit to be used in the snow report.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_snow_report\"><param name=\"location\">Paris, France</param></function>\n<function name=\"get_snow_report\"><param name=\"location\">Bordeaux, France</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      3088,
+      3164,
+      79181,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      27452,
+      33,
+      6918,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      3088,
+      3164,
+      79181,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      69086,
+      66306,
+      33,
+      6918,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "921a2189a59f5aa73204c753bbc61ec9a7227b921451a7e5053798b1437b86dc",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 1056,
+    "padded_input_tokens": 1064,
+    "output_tokens": 39,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 3.552189940500284,
+    "batch_latency_sec": 7.104379881000568,
+    "preparation_sec": 0.007710013999712828,
+    "batch_tokens_per_sec": 9.853076717815,
+    "device": "cuda:0",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789392948150635,
+    "memory_reserved_gb_after_generation": 8.251953125,
+    "peak_memory_allocated_gb": 5.0762457847595215,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T17:34:51.835515+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 39,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:0"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_7-3-1",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather conditions for a specified location.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to get the weather, in the format of 'City, State' (e.g., 'San Francisco, CA'). For state, use short form.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of measurement for temperature values.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n{\"type\": \"function\", \"function\": {\"name\": \"get_snow_report\", \"description\": \"Retrieves the latest snow report for a specified location, providing details about the snow conditions and weather.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to get the snow report, in the format of 'City, State', such as 'Aspen, CO'.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The temperature unit to be used in the snow report.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nWhat's the weather like in the two cities of Boston and San Francisco?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_7-3-1",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What's the weather like in the two cities of Boston and San Francisco?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather conditions for a specified location.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to get the weather, in the format of 'City, State' (e.g., 'San Francisco, CA'). For state, use short form."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of measurement for temperature values.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        },
+        {
+          "name": "get_snow_report",
+          "description": "Retrieves the latest snow report for a specified location, providing details about the snow conditions and weather.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to get the snow report, in the format of 'City, State', such as 'Aspen, CO'."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The temperature unit to be used in the snow report.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Boston, MA</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">San Francisco, CA</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      38879,
+      33,
+      11681,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      17913,
+      11779,
+      33,
+      9088,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "df52a6f83927cd2011254433069944d63cc4b7cfdfaf32b0b9fadcbc57da2e29",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 1035,
+    "padded_input_tokens": 1040,
+    "output_tokens": 41,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 3.63200811050001,
+    "batch_latency_sec": 7.26401622100002,
+    "preparation_sec": 0.007932658999379782,
+    "batch_tokens_per_sec": 10.187201920897225,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789390563964844,
+    "memory_reserved_gb_after_generation": 7.787109375,
+    "peak_memory_allocated_gb": 5.0710015296936035,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T17:39:28.017673+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 41,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_8-4-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"todo\", \"description\": \"Manages a todo list allowing the user to add, delete, or update items.\", \"parameters\": {\"type\": \"object\", \"required\": [\"type\", \"content\"], \"properties\": {\"type\": {\"type\": \"string\", \"description\": \"The action to be performed on the todo list.\", \"enum\": [\"add\", \"delete\", \"update\"]}, \"content\": {\"type\": \"string\", \"description\": \"The details of the todo item relevant to the action being performed.\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nHi there! Could you please help me manage my tasks? I need to add a task called 'Machine Learning Study Session'. Also, I have completed one of my tasks named 'todo random', and I would like to delete it from my list.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_8-4-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Hi there! Could you please help me manage my tasks? I need to add a task called 'Machine Learning Study Session'. Also, I have completed one of my tasks named 'todo random', and I would like to delete it from my list."
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "todo",
+          "description": "Manages a todo list allowing the user to add, delete, or update items.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "type",
+              "content"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "description": "The action to be performed on the todo list.",
+                "enum": [
+                  "add",
+                  "delete",
+                  "update"
+                ]
+              },
+              "content": {
+                "type": "string",
+                "description": "The details of the todo item relevant to the action being performed."
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"todo\"><param name=\"type\">add</param><param name=\"content\">Machine Learning Study Session</param></function>\n<function name=\"todo\"><param name=\"type\">delete</param><param name=\"content\">todo random</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      105,
+      25117,
+      1822,
+      20,
+      2546,
+      943,
+      2352,
+      1822,
+      3182,
+      21,
+      20,
+      2546,
+      943,
+      8803,
+      1822,
+      80667,
+      10305,
+      11269,
+      38440,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      105,
+      25117,
+      1822,
+      20,
+      2546,
+      943,
+      2352,
+      1822,
+      15902,
+      21,
+      20,
+      2546,
+      943,
+      8803,
+      1822,
+      105,
+      25117,
+      4750,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "1f28292c39abe3556b76c8c5e0ecd1a5c33c8efe85e5bdc0a57c0135e1a5c31f",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 906,
+    "padded_input_tokens": 912,
+    "output_tokens": 49,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 5.0160670129998834,
+    "batch_latency_sec": 10.032134025999767,
+    "preparation_sec": 0.007633532000909327,
+    "batch_tokens_per_sec": 10.466367347951781,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789383411407471,
+    "memory_reserved_gb_after_generation": 7.875,
+    "peak_memory_allocated_gb": 5.0338664054870605,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T18:17:36.636795+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 49,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_9-5-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_aws_pricing\", \"description\": \"Retrieves the pricing information for an AWS EC2 instance based on the provided memory and CPU requirements. The returned pricing is an estimate and may vary based on region and availability.\", \"parameters\": {\"type\": \"object\", \"required\": [\"memory\", \"cpu\"], \"properties\": {\"memory\": {\"type\": \"integer\", \"description\": \"The amount of memory required for the instance in gigabytes (GB).\"}, \"cpu\": {\"type\": \"string\", \"description\": \"The number of CPU units required for the instance. Valid options are 'single', 'dual', or 'quad'.\", \"enum\": [\"single\", \"dual\", \"quad\"]}, \"region\": {\"type\": \"string\", \"description\": \"The AWS region where the instance will be launched, such as 'us-east-1' or 'eu-central-1'.\", \"default\": \"us-east-1\"}, \"operating_system\": {\"type\": \"string\", \"description\": \"The operating system to be used on the instance.\", \"enum\": [\"Linux\", \"Windows\"], \"default\": \"Linux\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nWhat's cost of 2 and 4 gb ram machine on aws ec2 with one CPU?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_9-5-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What's cost of 2 and 4 gb ram machine on aws ec2 with one CPU?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_aws_pricing",
+          "description": "Retrieves the pricing information for an AWS EC2 instance based on the provided memory and CPU requirements. The returned pricing is an estimate and may vary based on region and availability.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "memory",
+              "cpu"
+            ],
+            "properties": {
+              "memory": {
+                "type": "integer",
+                "description": "The amount of memory required for the instance in gigabytes (GB)."
+              },
+              "cpu": {
+                "type": "string",
+                "description": "The number of CPU units required for the instance. Valid options are 'single', 'dual', or 'quad'.",
+                "enum": [
+                  "single",
+                  "dual",
+                  "quad"
+                ]
+              },
+              "region": {
+                "type": "string",
+                "description": "The AWS region where the instance will be launched, such as 'us-east-1' or 'eu-central-1'.",
+                "default": "us-east-1"
+              },
+              "operating_system": {
+                "type": "string",
+                "description": "The operating system to be used on the instance.",
+                "enum": [
+                  "Linux",
+                  "Windows"
+                ],
+                "default": "Linux"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_aws_pricing\"><param name=\"memory\">2</param><param name=\"cpu\">single</param></function>\n<function name=\"get_aws_pricing\"><param name=\"memory\">4</param><param name=\"cpu\">single</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      84,
+      13379,
+      28099,
+      11625,
+      1822,
+      20,
+      2546,
+      943,
+      72245,
+      1822,
+      39,
+      21,
+      20,
+      2546,
+      943,
+      95149,
+      1822,
+      47790,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      84,
+      13379,
+      28099,
+      11625,
+      1822,
+      20,
+      2546,
+      943,
+      72245,
+      1822,
+      41,
+      21,
+      20,
+      2546,
+      943,
+      95149,
+      1822,
+      47790,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "334a640b7b61ea474c3f6e364ab0bd30f2a409075739262d4a0318fe88d20584",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 1001,
+    "padded_input_tokens": 1008,
+    "output_tokens": 50,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 8.703295214000264,
+    "batch_latency_sec": 17.406590428000527,
+    "preparation_sec": 0.008030506000068272,
+    "batch_tokens_per_sec": 8.674875221806731,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.7893900871276855,
+    "memory_reserved_gb_after_generation": 7.873046875,
+    "peak_memory_allocated_gb": 5.057769775390625,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T17:47:33.312545+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 50,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_10-6-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"hotel_booking_book\", \"description\": \"Book a hotel room at the specified location for the specified number of adults and children, ensuring the accommodation dates are available.\", \"parameters\": {\"type\": \"object\", \"required\": [\"hotel_name\", \"location\", \"check_in\", \"check_out\", \"adults\", \"children\"], \"properties\": {\"hotel_name\": {\"type\": \"string\", \"description\": \"The name of the hotel to book.\"}, \"location\": {\"type\": \"string\", \"description\": \"The location of the hotel, in the format of 'City, State', such as 'San Francisco, CA' or 'New York, NY'.\"}, \"check_in\": {\"type\": \"string\", \"description\": \"The check-in date for the booking, in the format 'YYYY-MM-DD'.\"}, \"check_out\": {\"type\": \"string\", \"description\": \"The check-out date for the booking, in the format 'YYYY-MM-DD'.\"}, \"adults\": {\"type\": \"integer\", \"description\": \"The number of adults included in the booking.\"}, \"children\": {\"type\": \"integer\", \"description\": \"The number of children included in the booking.\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nI need to make a couple of hotel reservations. First, secure a room for 2 adults and 1 child at the Sheraton Hotel in New York with check-in on May 1, 2022, and check-out on May 5, 2022. Then, reserve a room for 1 adult and 2 children at the Marriott in Los Angeles, checking in on June 1, 2022, and checking out on June 10, 2022.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_10-6-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "I need to make a couple of hotel reservations. First, secure a room for 2 adults and 1 child at the Sheraton Hotel in New York with check-in on May 1, 2022, and check-out on May 5, 2022. Then, reserve a room for 1 adult and 2 children at the Marriott in Los Angeles, checking in on June 1, 2022, and checking out on June 10, 2022."
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "hotel_booking_book",
+          "description": "Book a hotel room at the specified location for the specified number of adults and children, ensuring the accommodation dates are available.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "hotel_name",
+              "location",
+              "check_in",
+              "check_out",
+              "adults",
+              "children"
+            ],
+            "properties": {
+              "hotel_name": {
+                "type": "string",
+                "description": "The name of the hotel to book."
+              },
+              "location": {
+                "type": "string",
+                "description": "The location of the hotel, in the format of 'City, State', such as 'San Francisco, CA' or 'New York, NY'."
+              },
+              "check_in": {
+                "type": "string",
+                "description": "The check-in date for the booking, in the format 'YYYY-MM-DD'."
+              },
+              "check_out": {
+                "type": "string",
+                "description": "The check-out date for the booking, in the format 'YYYY-MM-DD'."
+              },
+              "adults": {
+                "type": "integer",
+                "description": "The number of adults included in the booking."
+              },
+              "children": {
+                "type": "integer",
+                "description": "The number of children included in the booking."
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"hotel_booking_book\"><param name=\"hotel_name\">Sheraton Hotel</param><param name=\"location\">New York, NY</param><param name=\"check_in\">2022-05-01</param><param name=\"check_out\">2022-05-05</param><param name=\"adults\">2</param><param name=\"children\">1</param></function>\n<function name=\"hotel_booking_book\"><param name=\"hotel_name\">Marriott</param><param name=\"location\">Los Angeles, CA</param><param name=\"check_in\">2022-06-01</param><param name=\"check_out\">2022-06-10</param><param name=\"adults\">1</param><param name=\"children\">2</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      93032,
+      84,
+      5558,
+      306,
+      84,
+      5558,
+      1822,
+      20,
+      2546,
+      943,
+      93032,
+      11474,
+      1822,
+      49583,
+      14256,
+      17561,
+      21,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      4988,
+      2582,
+      33,
+      11367,
+      21,
+      20,
+      2546,
+      943,
+      10059,
+      12835,
+      1822,
+      1734,
+      39,
+      34,
+      1849,
+      34,
+      1873,
+      21,
+      20,
+      2546,
+      943,
+      10059,
+      37162,
+      1822,
+      1734,
+      39,
+      34,
+      1849,
+      34,
+      1849,
+      21,
+      20,
+      2546,
+      943,
+      373,
+      5679,
+      1822,
+      39,
+      21,
+      20,
+      2546,
+      943,
+      19491,
+      1822,
+      38,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      93032,
+      84,
+      5558,
+      306,
+      84,
+      5558,
+      1822,
+      20,
+      2546,
+      943,
+      93032,
+      11474,
+      1822,
+      12114,
+      84523,
+      21,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      29148,
+      14560,
+      33,
+      9088,
+      21,
+      20,
+      2546,
+      943,
+      10059,
+      12835,
+      1822,
+      1734,
+      39,
+      34,
+      2554,
+      34,
+      1873,
+      21,
+      20,
+      2546,
+      943,
+      10059,
+      37162,
+      1822,
+      1734,
+      39,
+      34,
+      2554,
+      34,
+      557,
+      21,
+      20,
+      2546,
+      943,
+      373,
+      5679,
+      1822,
+      38,
+      21,
+      20,
+      2546,
+      943,
+      19491,
+      1822,
+      39,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "717b635b2bde4be556e0e2f1233e8b21d3d3e5b04ffa7a4d60574d487beb80f1",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 1101,
+    "padded_input_tokens": 1104,
+    "output_tokens": 145,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 12.162015544000042,
+    "batch_latency_sec": 24.324031088000083,
+    "preparation_sec": 0.008325387000695628,
+    "batch_tokens_per_sec": 7.030084749577566,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789396286010742,
+    "memory_reserved_gb_after_generation": 7.787109375,
+    "peak_memory_allocated_gb": 5.088020324707031,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T17:29:21.181266+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 145,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_11-7-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"log_food\", \"description\": \"Logs a food item with a given portion size to track dietary intake.\", \"parameters\": {\"type\": \"object\", \"required\": [\"food_name\", \"portion_amount\", \"portion_unit\"], \"properties\": {\"food_name\": {\"type\": \"string\", \"description\": \"The name of the food to log, such as 'apple', 'bread', or 'chicken breast'.\"}, \"portion_amount\": {\"type\": \"number\", \"description\": \"The amount of the food item that was consumed, specified in the unit given by portion_unit.\"}, \"portion_unit\": {\"type\": \"string\", \"description\": \"The unit of measure for the portion amount, such as 'cup', 'grams', or 'slice'.\", \"enum\": [\"cup\", \"grams\", \"slice\", \"piece\", \"tablespoon\"]}, \"meal_type\": {\"type\": \"string\", \"description\": \"The type of meal or snack this food item is being logged for.\", \"enum\": [\"breakfast\", \"lunch\", \"dinner\", \"snack\"], \"default\": \"snack\"}, \"log_date\": {\"type\": \"string\", \"description\": \"The date and time when the food was consumed, in ISO 8601 format such as 'YYYY-MM-DDTHH:MM:SSZ'.\", \"default\": null}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nI had 8 pieces of frozen mango and a chai tea.\n\nEarlier I had two slices of pepperoni pizza and a coffee<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_11-7-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "I had 8 pieces of frozen mango and a chai tea.\n\nEarlier I had two slices of pepperoni pizza and a coffee"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "log_food",
+          "description": "Logs a food item with a given portion size to track dietary intake.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "food_name",
+              "portion_amount",
+              "portion_unit"
+            ],
+            "properties": {
+              "food_name": {
+                "type": "string",
+                "description": "The name of the food to log, such as 'apple', 'bread', or 'chicken breast'."
+              },
+              "portion_amount": {
+                "type": "float",
+                "description": "The amount of the food item that was consumed, specified in the unit given by portion_unit."
+              },
+              "portion_unit": {
+                "type": "string",
+                "description": "The unit of measure for the portion amount, such as 'cup', 'grams', or 'slice'.",
+                "enum": [
+                  "cup",
+                  "grams",
+                  "slice",
+                  "piece",
+                  "tablespoon"
+                ]
+              },
+              "meal_type": {
+                "type": "string",
+                "description": "The type of meal or snack this food item is being logged for.",
+                "enum": [
+                  "breakfast",
+                  "lunch",
+                  "dinner",
+                  "snack"
+                ],
+                "default": "snack"
+              },
+              "log_date": {
+                "type": "string",
+                "description": "The date and time when the food was consumed, in ISO 8601 format such as 'YYYY-MM-DDTHH:MM:SSZ'.",
+                "default": null
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"log_food\"><param name=\"food_name\">frozen mango</param><param name=\"portion_amount\">8</param><param name=\"portion_unit\">piece</param><param name=\"meal_type\">snack</param></function>\n<function name=\"log_food\"><param name=\"food_name\">chai tea</param><param name=\"portion_amount\">1</param><param name=\"portion_unit\">piece</param><param name=\"meal_type\">snack</param></function>\n<function name=\"log_food\"><param name=\"food_name\">pepperoni pizza</param><param name=\"portion_amount\">2</param><param name=\"portion_unit\">slice</param><param name=\"meal_type\">snack</param></function>\n<function name=\"log_food\"><param name=\"food_name\">coffee</param><param name=\"portion_amount\">1</param><param name=\"portion_unit\">piece</param><param name=\"meal_type\">snack</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      91885,
+      97264,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      45,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      27230,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      13578,
+      1822,
+      19830,
+      633,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      361,
+      2804,
+      13040,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      38,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      27230,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      13578,
+      1822,
+      19830,
+      633,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      427,
+      3271,
+      19508,
+      36458,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      39,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      37521,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      13578,
+      1822,
+      19830,
+      633,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      88,
+      26684,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      38,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      27230,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      13578,
+      1822,
+      19830,
+      633,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "6a3f6cf4fb55cb565113f02a5f15c796ce5aef206ab0482d299bcb76243e5a29",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 1057,
+    "padded_input_tokens": 1064,
+    "output_tokens": 175,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 14.688984831000198,
+    "batch_latency_sec": 29.377969662000396,
+    "preparation_sec": 0.008089187999757996,
+    "batch_tokens_per_sec": 6.909939738367113,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789395809173584,
+    "memory_reserved_gb_after_generation": 7.787109375,
+    "peak_memory_allocated_gb": 5.07766580581665,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T17:34:44.921559+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 175,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_12-8-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"log_food\", \"description\": \"Logs a food item with details about the portion size and the meal it is associated with.\", \"parameters\": {\"type\": \"object\", \"required\": [\"food_name\", \"portion_amount\", \"meal_name\"], \"properties\": {\"food_name\": {\"type\": \"string\", \"description\": \"The name of the food to log.\"}, \"portion_amount\": {\"type\": \"number\", \"description\": \"The amount of the food item that was consumed, in specified units.\"}, \"portion_unit\": {\"type\": \"string\", \"description\": \"The unit of measure for the portion amount. Choose a unit such as 'grams', 'ounces', 'pieces', 'cups', or 'tablespoons'.\", \"enum\": [\"grams\", \"ounces\", \"pieces\", \"cups\", \"tablespoons\"], \"default\": \"grams\"}, \"meal_name\": {\"type\": \"string\", \"description\": \"The name of the meal with which the food item is associated. Options include 'breakfast', 'lunch', 'dinner', or 'snack'.\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nFor breakfast I had a 12 ounce iced coffee and a banana.\n\nFor lunch I had a quesadilla\n\nBreakfast four ounces of asparagus, two eggs, one piece of gluten free bread.<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_12-8-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "For breakfast I had a 12 ounce iced coffee and a banana.\n\nFor lunch I had a quesadilla\n\nBreakfast four ounces of asparagus, two eggs, one piece of gluten free bread."
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "log_food",
+          "description": "Logs a food item with details about the portion size and the meal it is associated with.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "food_name",
+              "portion_amount",
+              "meal_name"
+            ],
+            "properties": {
+              "food_name": {
+                "type": "string",
+                "description": "The name of the food to log."
+              },
+              "portion_amount": {
+                "type": "float",
+                "description": "The amount of the food item that was consumed, in specified units."
+              },
+              "portion_unit": {
+                "type": "string",
+                "description": "The unit of measure for the portion amount. Choose a unit such as 'grams', 'ounces', 'pieces', 'cups', or 'tablespoons'.",
+                "enum": [
+                  "grams",
+                  "ounces",
+                  "pieces",
+                  "cups",
+                  "tablespoons"
+                ],
+                "default": "grams"
+              },
+              "meal_name": {
+                "type": "string",
+                "description": "The name of the meal with which the food item is associated. Options include 'breakfast', 'lunch', 'dinner', or 'snack'."
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"log_food\"><param name=\"food_name\">iced coffee</param><param name=\"portion_amount\">12</param><param name=\"portion_unit\">ounces</param><param name=\"meal_name\">breakfast</param></function>\n<function name=\"log_food\"><param name=\"food_name\">banana</param><param name=\"portion_amount\">1</param><param name=\"portion_unit\">piece</param><param name=\"meal_name\">breakfast</param></function>\n<function name=\"log_food\"><param name=\"food_name\">quesadilla</param><param name=\"portion_amount\">1</param><param name=\"portion_unit\">piece</param><param name=\"meal_name\">lunch</param></function>\n<function name=\"log_food\"><param name=\"food_name\">asparagus</param><param name=\"portion_amount\">4</param><param name=\"portion_unit\">ounces</param><param name=\"meal_name\">breakfast</param></function>\n<function name=\"log_food\"><param name=\"food_name\">eggs</param><param name=\"portion_amount\">2</param><param name=\"portion_unit\">pieces</param><param name=\"meal_name\">breakfast</param></function>\n<function name=\"log_food\"><param name=\"food_name\">gluten free bread</param><param name=\"portion_amount\">1</param><param name=\"portion_unit\">piece</param><param name=\"meal_name\">breakfast</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      6769,
+      10345,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      627,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      39317,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      11474,
+      1822,
+      8830,
+      10504,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      17346,
+      4578,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      38,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      27230,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      11474,
+      1822,
+      8830,
+      10504,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      11177,
+      373,
+      9364,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      38,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      27230,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      11474,
+      1822,
+      97,
+      6032,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      318,
+      1611,
+      31897,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      41,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      39317,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      11474,
+      1822,
+      8830,
+      10504,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      102917,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      39,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      58393,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      11474,
+      1822,
+      8830,
+      10504,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      4175,
+      4494,
+      956,
+      1822,
+      20,
+      2546,
+      943,
+      31590,
+      11474,
+      1822,
+      3582,
+      26394,
+      2927,
+      11566,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      98612,
+      1822,
+      38,
+      21,
+      20,
+      2546,
+      943,
+      31461,
+      104400,
+      1822,
+      27230,
+      21,
+      20,
+      2546,
+      943,
+      47034,
+      11474,
+      1822,
+      8830,
+      10504,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "87360e35bc92fd9225030752ae699db3b9df18b258937bb59776325ab249c6e6",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 1017,
+    "padded_input_tokens": 1024,
+    "output_tokens": 261,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 21.44856698400008,
+    "batch_latency_sec": 42.89713396800016,
+    "preparation_sec": 0.007436916999722598,
+    "batch_tokens_per_sec": 6.737046820321012,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789393424987793,
+    "memory_reserved_gb_after_generation": 7.869140625,
+    "peak_memory_allocated_gb": 5.061874866485596,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T17:43:33.403835+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 261,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_13-9-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather for a specified location, with the option to get the result in either Celsius or Fahrenheit.\", \"parameters\": {\"type\": \"object\", \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which to retrieve the weather, in the format of 'City, State', such as 'San Francisco, CA'. If using state name then use short form.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of temperature for the weather report.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}, \"required\": [\"location\"]}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nCould you tell me the current weather in Boston, MA and also in San Francisco?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_13-9-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "Could you tell me the current weather in Boston, MA and also in San Francisco?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather for a specified location, with the option to get the result in either Celsius or Fahrenheit.",
+          "parameters": {
+            "type": "dict",
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which to retrieve the weather, in the format of 'City, State', such as 'San Francisco, CA'. If using state name then use short form."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of temperature for the weather report.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            },
+            "required": [
+              "location"
+            ]
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Boston, MA</param><param name=\"unit\">celsius</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">San Francisco, CA</param><param name=\"unit\">celsius</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      38879,
+      33,
+      11681,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      88,
+      65365,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      17913,
+      11779,
+      33,
+      9088,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      88,
+      65365,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "c0864061f8b2f1fd202337e8cc656bd528d4bfd74f770c859ba13a5c9beb2387",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 905,
+    "padded_input_tokens": 912,
+    "output_tokens": 57,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 4.942783565499667,
+    "batch_latency_sec": 9.885567130999334,
+    "preparation_sec": 0.007028362000710331,
+    "batch_tokens_per_sec": 9.205339339069441,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789383411407471,
+    "memory_reserved_gb_after_generation": 7.875,
+    "peak_memory_allocated_gb": 5.0338664054870605,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T18:18:20.504497+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 57,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_14-10-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"get_current_weather\", \"description\": \"Retrieves the current weather information for a specified location.\", \"parameters\": {\"type\": \"object\", \"required\": [\"location\"], \"properties\": {\"location\": {\"type\": \"string\", \"description\": \"The location for which the current weather is requested, in the format of 'City, State', such as 'San Francisco, CA' or 'New York, NY'. Use short form for state\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of measurement for temperature values.\", \"enum\": [\"celsius\", \"fahrenheit\"], \"default\": \"fahrenheit\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nWhat's the weather like in the two cities of Boston and San Francisco?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_14-10-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "What's the weather like in the two cities of Boston and San Francisco?"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "get_current_weather",
+          "description": "Retrieves the current weather information for a specified location.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "location"
+            ],
+            "properties": {
+              "location": {
+                "type": "string",
+                "description": "The location for which the current weather is requested, in the format of 'City, State', such as 'San Francisco, CA' or 'New York, NY'. Use short form for state"
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of measurement for temperature values.",
+                "enum": [
+                  "celsius",
+                  "fahrenheit"
+                ],
+                "default": "fahrenheit"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "<function name=\"get_current_weather\"><param name=\"location\">Boston, MA</param><param name=\"unit\">celsius</param></function>\n<function name=\"get_current_weather\"><param name=\"location\">San Francisco, CA</param><param name=\"unit\">celsius</param></function><|im_end|>",
+    "token_ids": [
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      38879,
+      33,
+      11681,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      88,
+      65365,
+      21,
+      19,
+      220,
+      18,
+      2546,
+      943,
+      1135,
+      4025,
+      5523,
+      84,
+      29996,
+      1822,
+      20,
+      2546,
+      943,
+      24201,
+      1822,
+      17913,
+      11779,
+      33,
+      9088,
+      21,
+      20,
+      2546,
+      943,
+      17398,
+      1822,
+      88,
+      65365,
+      21,
+      19,
+      130073
+    ],
+    "rendered_prompt_sha256": "d6e0eff26094e8fe3865d3b865cfd274a1541b37068d2dae2000a1b596b6a60c",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 894,
+    "padded_input_tokens": 896,
+    "output_tokens": 57,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 10.887282699500247,
+    "batch_latency_sec": 21.774565399000494,
+    "preparation_sec": 0.006326091001028544,
+    "batch_tokens_per_sec": 8.725776910740155,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789383411407471,
+    "memory_reserved_gb_after_generation": 7.875,
+    "peak_memory_allocated_gb": 5.029881477355957,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T18:25:06.344750+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 57,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  },
+  {
+    "id": "live_parallel_15-11-0",
+    "category": "live_parallel",
+    "prompt": "<s><|im_start|>system\nYou are an assistant specialized in accurate, efficient function calling and task completion.\n\nFollow these rules for every user request.\n\n1. **Answer the actual request.** First determine whether the request can be answered directly or requires a provided function. For arithmetic, ordinary reasoning, explanations, and coding tasks, answer directly when you can do so reliably without a function. Do not refuse merely because no supplied function matches. Use a function only when it meaningfully supports the requested operation. Never force an unrelated function to fit.\n\n2. **Select the correct function.** Use only the provided functions. Match each requested operation to the function whose description and schema support it. Use exact function names and parameter names. Do not invent functions or substitute an unrelated function.\n\n3. **Preserve the user's intent.** Extract values from the request and conversation without guessing. Preserve every meaningful constraint, including all requested operations, locations, quantities, units, languages, preferences, exclusions, and descriptive details. For free-text arguments, faithfully retain the important details the user specified. Do not silently omit constraints or add unsupported requirements.\n\n4. **Complete every independent operation.** Identify all requested operations before generating the answer. Emit a separate function block for each required call, in the requested order. If a function accepts one value but the user requests the same operation for multiple values, make one call per value. Do not omit operations, combine incompatible values, or stop after completing only part of the request.\n\n5. **Follow the schema exactly.** Check required parameters, types, allowed enum values, and documented defaults. Never emit a value outside an enum. Never invent a missing value. Omit optional parameters when their documented defaults are appropriate. For structured arguments, use the syntax required by the supplied function-call format and valid JSON where JSON is required.\n\n6. **Handle missing or unsupported information decisively.** If a required argument is genuinely missing and cannot be inferred safely, ask one concise clarification and stop; do not emit an invalid call or repeatedly reconsider the same issue. If a requested operation is unsupported by the available functions, do not fabricate a call. Complete other supported operations when possible, and briefly identify the unsupported part when the required output format permits it.\n\n7. **Validate once, then finish.** Make one final check that the answer addresses the request, all supported operations are covered, arguments and enum values are valid, and the required format is followed. Correct any specific error found. Do not repeat the same checks, restart a settled decision, or continue reasoning after the appropriate action is clear.\n\n8. **Follow the required output format.** When function calls are required, emit the correctly formatted function block or blocks without introductions or reasoning narration. When no function is needed, answer naturally and directly. Ask a concise clarification when necessary. Follow all supplied tool-use instructions and task-specific system instructions.\n\n# Tools\n\nYou are provided with function signatures within <tools></tools> XML tags:\n<tools>\n{\"type\": \"function\", \"function\": {\"name\": \"cmd_controller.execute\", \"description\": \"Executes a specified command in the Windows operating system using the os.system() function.\", \"parameters\": {\"type\": \"object\", \"required\": [\"command\"], \"properties\": {\"command\": {\"type\": \"string\", \"description\": \"The command line instruction to be passed to os.system() for execution, formatted as a Windows command prompt statement.\"}, \"unit\": {\"type\": \"string\", \"description\": \"The unit of measurement for the command execution time, such as 'seconds' or 'milliseconds'\", \"enum\": [\"seconds\", \"milliseconds\"], \"default\": \"N/A\"}}}}}\n</tools>\n\nTool usage guidelines:\n- You may call zero or more functions. If no function calls are needed, just answer normally and do not include any <function ... </function>.\n- When calling a function, return an XML object within <function ... </function> using:\n<function name=\"function-name\"><param name=\"param-name\">param-value</param></function>\n- param-value may be multi-line. If it contains <, & or newline characters, wrap it in a CDATA block: <param name=\"param-name\"><![CDATA[...multi-line value...]]></param><|im_end|>\n<|im_start|>user\nlist file in c drive and make file called testing.txt<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+    "bfcl_sample": {
+      "id": "live_parallel_15-11-0",
+      "question": [
+        [
+          {
+            "role": "user",
+            "content": "list file in c drive and make file called testing.txt"
+          }
+        ]
+      ],
+      "function": [
+        {
+          "name": "cmd_controller.execute",
+          "description": "Executes a specified command in the Windows operating system using the os.system() function.",
+          "parameters": {
+            "type": "dict",
+            "required": [
+              "command"
+            ],
+            "properties": {
+              "command": {
+                "type": "string",
+                "description": "The command line instruction to be passed to os.system() for execution, formatted as a Windows command prompt statement."
+              },
+              "unit": {
+                "type": "string",
+                "description": "The unit of measurement for the command execution time, such as 'seconds' or 'milliseconds'",
+                "enum": [
+                  "seconds",
+                  "milliseconds"
+                ],
+                "default": "N/A"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "raw_output": "I can help with that. To make a file called \"testing.txt\" in the C drive, I need to know the command to create the file. Could you please provide the command to create the file?<|im_end|>",
+    "token_ids": [
+      62,
+      571,
+      1848,
+      401,
+      380,
+      35,
+      2425,
+      1457,
+      280,
+      5450,
+      2389,
+      458,
+      61848,
+      16524,
+      23,
+      310,
+      285,
+      371,
+      7279,
+      33,
+      354,
+      1178,
+      317,
+      1110,
+      285,
+      5913,
+      317,
+      4707,
+      285,
+      5450,
+      35,
+      23546,
+      447,
+      8625,
+      3211,
+      285,
+      5913,
+      317,
+      4707,
+      285,
+      5450,
+      52,
+      130073
+    ],
+    "rendered_prompt_sha256": "7f3c334ba937726baac6910365eb8c9559c0fba109ad1a5a36574b563bb3dad8",
+    "system_prompt_sha256": "b3692e28f99cd82236ebdd722b1f87b4acb6f4f34515b5f5f55b1b77cc0ea76f",
+    "input_tokens": 891,
+    "padded_input_tokens": 896,
+    "output_tokens": 43,
+    "stopped_on_eos": true,
+    "hit_token_limit": false,
+    "status": "complete",
+    "requested_max_new_tokens": 512,
+    "max_new_tokens_used": 512,
+    "attempt_stage": 512,
+    "attempt_index": 1,
+    "latency_sec": 4.010062889999972,
+    "batch_latency_sec": 8.020125779999944,
+    "preparation_sec": 0.006994923000092967,
+    "batch_tokens_per_sec": 9.226787961921529,
+    "device": "cuda:1",
+    "batch_size": 2,
+    "memory_allocated_gb_after_generation": 4.789381504058838,
+    "memory_reserved_gb_after_generation": 7.875,
+    "peak_memory_allocated_gb": 5.029881000518799,
+    "context_limit": 131072,
+    "generation_settings": {
+      "do_sample": false,
+      "use_cache": true,
+      "enable_thinking": false,
+      "requested_max_new_tokens": 512,
+      "effective_max_new_tokens": 512,
+      "dtype": "float16"
+    },
+    "recorded_at_utc": "2026-10-12T18:27:02.987479+00:00",
+    "attempt_history": [
+      {
+        "requested_max_new_tokens": 512,
+        "max_new_tokens_used": 512,
+        "output_tokens": 43,
+        "stopped_on_eos": true,
+        "hit_token_limit": false,
+        "status": "complete",
+        "device": "cuda:1"
+      }
+    ]
+  }
+]

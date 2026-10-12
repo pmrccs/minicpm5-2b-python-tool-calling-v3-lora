@@ -1,11 +1,49 @@
 {
   "all_attempt_record_count": 3655,
   "attempt_record_count": 3655,
+  "category_json_files": {
+    "irrelevance": "categories/irrelevance.json",
+    "live_irrelevance": "categories/live_irrelevance.json",
+    "live_multiple": "categories/live_multiple.json",
+    "live_parallel": "categories/live_parallel.json",
+    "live_parallel_multiple": "categories/live_parallel_multiple.json",
+    "live_relevance": "categories/live_relevance.json",
+    "live_simple": "categories/live_simple.json",
+    "multiple": "categories/multiple.json",
+    "parallel": "categories/parallel.json",
+    "parallel_multiple": "categories/parallel_multiple.json",
+    "simple_java": "categories/simple_java.json",
+    "simple_javascript": "categories/simple_javascript.json",
+    "simple_python": "categories/simple_python.json"
+  },
   "checkpoint_records_per_commit_target": 100,
   "completed_utc": "2026-10-12T19:00:19.837814+00:00",
+  "final_category_counts": {
+    "irrelevance": 240,
+    "live_irrelevance": 884,
+    "live_multiple": 1053,
+    "live_parallel": 16,
+    "live_parallel_multiple": 24,
+    "live_relevance": 16,
+    "live_simple": 258,
+    "multiple": 200,
+    "parallel": 200,
+    "parallel_multiple": 200,
+    "simple_java": 100,
+    "simple_javascript": 50,
+    "simple_python": 400
+  },
+  "final_device_counts": {
+    "cuda:0": 1812,
+    "cuda:1": 1829
+  },
   "final_generation_errors": 0,
   "final_record_count": 3641,
   "final_records_still_at_token_limit": 7,
+  "final_status_counts": {
+    "complete": 3641
+  },
+  "final_token_limit_hits": 7,
   "github_sync_pending": false,
   "last_checkpoint_utc": "2026-10-12T19:00:14.437714+00:00",
   "pilot_metrics": [

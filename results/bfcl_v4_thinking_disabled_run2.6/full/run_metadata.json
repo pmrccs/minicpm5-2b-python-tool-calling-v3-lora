@@ -1,5 +1,14 @@
 {
   "all_attempt_record_count": 3655,
+  "all_attempt_stage_counts": {
+    "1024": 7,
+    "2048": 7,
+    "512": 3641
+  },
+  "all_attempt_status_counts": {
+    "complete": 3655
+  },
+  "all_attempt_token_limit_hits": 21,
   "all_attempts_journal": "attempt_journal.jsonl",
   "attempt_token_ids_saved": true,
   "base_model": "openbmb/MiniCPM5-2B",
@@ -7,6 +16,21 @@
   "bfcl_commit": "f7cf7359b7ac615a0b294831c5ba2bc95ee4a000",
   "bfcl_repo": "https://github.com/ShishirPatil/gorilla",
   "cache_enabled": true,
+  "category_json_files": {
+    "irrelevance": "categories/irrelevance.json",
+    "live_irrelevance": "categories/live_irrelevance.json",
+    "live_multiple": "categories/live_multiple.json",
+    "live_parallel": "categories/live_parallel.json",
+    "live_parallel_multiple": "categories/live_parallel_multiple.json",
+    "live_relevance": "categories/live_relevance.json",
+    "live_simple": "categories/live_simple.json",
+    "multiple": "categories/multiple.json",
+    "parallel": "categories/parallel.json",
+    "parallel_multiple": "categories/parallel_multiple.json",
+    "simple_java": "categories/simple_java.json",
+    "simple_javascript": "categories/simple_javascript.json",
+    "simple_python": "categories/simple_python.json"
+  },
   "checkpoint_policy": "immutable JSONL shards around every 100 completed attempts; final remainder committed at each stage boundary",
   "created_or_resumed_utc": "2026-10-12T16:03:35.881047+00:00",
   "do_sample": false,
@@ -32,10 +56,17 @@
     "simple_javascript": 50,
     "simple_python": 400
   },
+  "final_device_counts": {
+    "cuda:0": 1812,
+    "cuda:1": 1829
+  },
   "final_generation_errors": 0,
   "final_raw_jsonl": "bfcl_native_raw_generations.jsonl",
   "final_record_count": 3641,
   "final_records_still_at_token_limit": 7,
+  "final_status_counts": {
+    "complete": 3641
+  },
   "finalized_utc": "2026-10-12T19:00:19.835647+00:00",
   "generation_dtype": "torch.float16",
   "github_branch": "main",
@@ -20914,6 +20945,515 @@
     "safetensors": "0.8.0",
     "tokenizers": "0.22.2",
     "transformers": "4.57.6"
+  },
+  "per_category_generation_statistics": {
+    "irrelevance": {
+      "batch_latency_sec": {
+        "count": 240,
+        "max": 48.25022857099975,
+        "mean": 9.60695612014169,
+        "median": 6.609989202999714,
+        "min": 3.2320707970011426,
+        "p95": 20.668383792000895
+      },
+      "final_records": 240,
+      "input_tokens": {
+        "count": 240,
+        "max": 1019.0,
+        "mean": 887.2875,
+        "median": 885.0,
+        "min": 815.0,
+        "p95": 931.0
+      },
+      "output_tokens": {
+        "count": 240,
+        "max": 243.0,
+        "mean": 41.37083333333333,
+        "median": 32.0,
+        "min": 8.0,
+        "p95": 106.0
+      },
+      "per_record_latency_sec": {
+        "count": 240,
+        "max": 24.125114285499876,
+        "mean": 4.803478060070845,
+        "median": 3.304994601499857,
+        "min": 1.6160353985005713,
+        "p95": 10.334191896000448
+      },
+      "status_counts": {
+        "complete": 240
+      },
+      "token_limit_hits": 0
+    },
+    "live_irrelevance": {
+      "batch_latency_sec": {
+        "count": 884,
+        "max": 346.4616891509995,
+        "mean": 11.079840193682132,
+        "median": 7.59934104299964,
+        "min": 0.43741847299861547,
+        "p95": 22.042720217999886
+      },
+      "final_records": 884,
+      "input_tokens": {
+        "count": 884,
+        "max": 6776.0,
+        "mean": 1351.7941176470588,
+        "median": 1221.5,
+        "min": 622.0,
+        "p95": 2289.0
+      },
+      "output_tokens": {
+        "count": 884,
+        "max": 2048.0,
+        "mean": 47.532805429864254,
+        "median": 32.0,
+        "min": 2.0,
+        "p95": 92.0
+      },
+      "per_record_latency_sec": {
+        "count": 884,
+        "max": 173.23084457549976,
+        "mean": 5.54016750547964,
+        "median": 3.79967052149982,
+        "min": 0.43741847299861547,
+        "p95": 11.021360108999943
+      },
+      "status_counts": {
+        "complete": 884
+      },
+      "token_limit_hits": 3
+    },
+    "live_multiple": {
+      "batch_latency_sec": {
+        "count": 1053,
+        "max": 344.93723472199963,
+        "mean": 10.20073774649193,
+        "median": 7.875235802999896,
+        "min": 3.2052017109999724,
+        "p95": 19.59077544899992
+      },
+      "final_records": 1053,
+      "input_tokens": {
+        "count": 1053,
+        "max": 6202.0,
+        "mean": 1697.6666666666667,
+        "median": 1582.0,
+        "min": 911.0,
+        "p95": 2481.0
+      },
+      "output_tokens": {
+        "count": 1053,
+        "max": 2048.0,
+        "mean": 40.909781576448246,
+        "median": 32.0,
+        "min": 9.0,
+        "p95": 67.0
+      },
+      "per_record_latency_sec": {
+        "count": 1053,
+        "max": 172.46861736099981,
+        "mean": 5.100368873245965,
+        "median": 3.937617901499948,
+        "min": 1.6026008554999862,
+        "p95": 9.79538772449996
+      },
+      "status_counts": {
+        "complete": 1053
+      },
+      "token_limit_hits": 2
+    },
+    "live_parallel": {
+      "batch_latency_sec": {
+        "count": 16,
+        "max": 42.89713396800016,
+        "mean": 14.818083629000114,
+        "median": 10.032134025999767,
+        "min": 7.054241935999926,
+        "p95": 29.377969662000396
+      },
+      "final_records": 16,
+      "input_tokens": {
+        "count": 16,
+        "max": 1101.0,
+        "mean": 964.5625,
+        "median": 934.0,
+        "min": 891.0,
+        "p95": 1057.0
+      },
+      "output_tokens": {
+        "count": 16,
+        "max": 261.0,
+        "mean": 76.1875,
+        "median": 53.0,
+        "min": 39.0,
+        "p95": 175.0
+      },
+      "per_record_latency_sec": {
+        "count": 16,
+        "max": 21.44856698400008,
+        "mean": 7.409041814500057,
+        "median": 5.0160670129998834,
+        "min": 3.527120967999963,
+        "p95": 14.688984831000198
+      },
+      "status_counts": {
+        "complete": 16
+      },
+      "token_limit_hits": 0
+    },
+    "live_parallel_multiple": {
+      "batch_latency_sec": {
+        "count": 24,
+        "max": 19.26346708600005,
+        "mean": 11.927990750041666,
+        "median": 11.193748562999644,
+        "min": 6.875189278999642,
+        "p95": 18.965821806000122
+      },
+      "final_records": 24,
+      "input_tokens": {
+        "count": 24,
+        "max": 3162.0,
+        "mean": 1598.75,
+        "median": 1433.5,
+        "min": 1005.0,
+        "p95": 2390.0
+      },
+      "output_tokens": {
+        "count": 24,
+        "max": 111.0,
+        "mean": 62.166666666666664,
+        "median": 53.0,
+        "min": 21.0,
+        "p95": 108.0
+      },
+      "per_record_latency_sec": {
+        "count": 24,
+        "max": 9.631733543000024,
+        "mean": 5.963995375020833,
+        "median": 5.596874281499822,
+        "min": 3.437594639499821,
+        "p95": 9.482910903000061
+      },
+      "status_counts": {
+        "complete": 24
+      },
+      "token_limit_hits": 0
+    },
+    "live_relevance": {
+      "batch_latency_sec": {
+        "count": 16,
+        "max": 345.8687333020007,
+        "mean": 30.488239188437518,
+        "median": 7.635859636499617,
+        "min": 4.4131807940002545,
+        "p95": 21.585463678999986
+      },
+      "final_records": 16,
+      "input_tokens": {
+        "count": 16,
+        "max": 2308.0,
+        "mean": 1477.5,
+        "median": 1426.0,
+        "min": 917.0,
+        "p95": 1974.0
+      },
+      "output_tokens": {
+        "count": 16,
+        "max": 2048.0,
+        "mean": 170.125,
+        "median": 38.5,
+        "min": 18.0,
+        "p95": 87.0
+      },
+      "per_record_latency_sec": {
+        "count": 16,
+        "max": 172.93436665100035,
+        "mean": 15.244119594218759,
+        "median": 3.8179298182498087,
+        "min": 2.2065903970001273,
+        "p95": 10.792731839499993
+      },
+      "status_counts": {
+        "complete": 16
+      },
+      "token_limit_hits": 1
+    },
+    "live_simple": {
+      "batch_latency_sec": {
+        "count": 258,
+        "max": 63.7404337920002,
+        "mean": 8.972200359356581,
+        "median": 6.895434722000573,
+        "min": 3.2991711640006542,
+        "p95": 19.503385994999917
+      },
+      "final_records": 258,
+      "input_tokens": {
+        "count": 258,
+        "max": 1480.0,
+        "mean": 968.3720930232558,
+        "median": 931.0,
+        "min": 801.0,
+        "p95": 1190.0
+      },
+      "output_tokens": {
+        "count": 258,
+        "max": 394.0,
+        "mean": 40.36046511627907,
+        "median": 31.0,
+        "min": 13.0,
+        "p95": 87.0
+      },
+      "per_record_latency_sec": {
+        "count": 258,
+        "max": 31.8702168960001,
+        "mean": 4.4861001796782904,
+        "median": 3.4477173610002865,
+        "min": 1.6495855820003271,
+        "p95": 9.751692997499958
+      },
+      "status_counts": {
+        "complete": 258
+      },
+      "token_limit_hits": 0
+    },
+    "multiple": {
+      "batch_latency_sec": {
+        "count": 200,
+        "max": 30.698049149000326,
+        "mean": 10.012867162369997,
+        "median": 7.673683218500173,
+        "min": 3.989749890000894,
+        "p95": 23.057877378000285
+      },
+      "final_records": 200,
+      "input_tokens": {
+        "count": 200,
+        "max": 1530.0,
+        "mean": 1133.465,
+        "median": 1116.5,
+        "min": 909.0,
+        "p95": 1351.0
+      },
+      "output_tokens": {
+        "count": 200,
+        "max": 79.0,
+        "mean": 33.55,
+        "median": 32.5,
+        "min": 17.0,
+        "p95": 47.0
+      },
+      "per_record_latency_sec": {
+        "count": 200,
+        "max": 15.349024574500163,
+        "mean": 5.006433581184998,
+        "median": 3.8368416092500865,
+        "min": 1.994874945000447,
+        "p95": 11.528938689000142
+      },
+      "status_counts": {
+        "complete": 200
+      },
+      "token_limit_hits": 0
+    },
+    "parallel": {
+      "batch_latency_sec": {
+        "count": 200,
+        "max": 48.12344310499975,
+        "mean": 15.481692407445038,
+        "median": 14.295457989999704,
+        "min": 5.535584134000601,
+        "p95": 26.003251276999436
+      },
+      "final_records": 200,
+      "input_tokens": {
+        "count": 200,
+        "max": 1078.0,
+        "mean": 931.645,
+        "median": 925.5,
+        "min": 820.0,
+        "p95": 1023.0
+      },
+      "output_tokens": {
+        "count": 200,
+        "max": 292.0,
+        "mean": 84.43,
+        "median": 77.5,
+        "min": 22.0,
+        "p95": 150.0
+      },
+      "per_record_latency_sec": {
+        "count": 200,
+        "max": 24.061721552499876,
+        "mean": 7.740846203722519,
+        "median": 7.147728994999852,
+        "min": 2.7677920670003004,
+        "p95": 13.001625638499718
+      },
+      "status_counts": {
+        "complete": 200
+      },
+      "token_limit_hits": 0
+    },
+    "parallel_multiple": {
+      "batch_latency_sec": {
+        "count": 200,
+        "max": 43.045534828999735,
+        "mean": 18.139795128585007,
+        "median": 18.123536930500222,
+        "min": 5.6990124220001235,
+        "p95": 27.91400619099977
+      },
+      "final_records": 200,
+      "input_tokens": {
+        "count": 200,
+        "max": 1633.0,
+        "mean": 1163.735,
+        "median": 1139.0,
+        "min": 906.0,
+        "p95": 1464.0
+      },
+      "output_tokens": {
+        "count": 200,
+        "max": 192.0,
+        "mean": 101.445,
+        "median": 100.5,
+        "min": 27.0,
+        "p95": 164.0
+      },
+      "per_record_latency_sec": {
+        "count": 200,
+        "max": 21.522767414499867,
+        "mean": 9.069897564292503,
+        "median": 9.061768465250111,
+        "min": 2.8495062110000617,
+        "p95": 13.957003095499886
+      },
+      "status_counts": {
+        "complete": 200
+      },
+      "token_limit_hits": 0
+    },
+    "simple_java": {
+      "batch_latency_sec": {
+        "count": 100,
+        "max": 82.70035196700064,
+        "mean": 9.972655397389971,
+        "median": 7.701389791499423,
+        "min": 4.8883320200002345,
+        "p95": 18.78353835100097
+      },
+      "final_records": 100,
+      "input_tokens": {
+        "count": 100,
+        "max": 1163.0,
+        "mean": 926.82,
+        "median": 915.5,
+        "min": 848.0,
+        "p95": 1000.0
+      },
+      "output_tokens": {
+        "count": 100,
+        "max": 116.0,
+        "mean": 42.01,
+        "median": 37.5,
+        "min": 19.0,
+        "p95": 70.0
+      },
+      "per_record_latency_sec": {
+        "count": 100,
+        "max": 41.35017598350032,
+        "mean": 4.986327698694986,
+        "median": 3.8506948957497116,
+        "min": 2.4441660100001172,
+        "p95": 9.391769175500485
+      },
+      "status_counts": {
+        "complete": 100
+      },
+      "token_limit_hits": 0
+    },
+    "simple_javascript": {
+      "batch_latency_sec": {
+        "count": 50,
+        "max": 345.8528460939997,
+        "mean": 17.686374741180135,
+        "median": 9.339269322500513,
+        "min": 4.777855220001584,
+        "p95": 21.139133562999632
+      },
+      "final_records": 50,
+      "input_tokens": {
+        "count": 50,
+        "max": 1130.0,
+        "mean": 937.04,
+        "median": 932.0,
+        "min": 841.0,
+        "p95": 1019.0
+      },
+      "output_tokens": {
+        "count": 50,
+        "max": 2048.0,
+        "mean": 83.14,
+        "median": 37.5,
+        "min": 18.0,
+        "p95": 109.0
+      },
+      "per_record_latency_sec": {
+        "count": 50,
+        "max": 345.8528460939997,
+        "mean": 12.301715831530064,
+        "median": 4.669634661250257,
+        "min": 2.388927610000792,
+        "p95": 10.569566781499816
+      },
+      "status_counts": {
+        "complete": 50
+      },
+      "token_limit_hits": 1
+    },
+    "simple_python": {
+      "batch_latency_sec": {
+        "count": 400,
+        "max": 28.111578887000178,
+        "mean": 7.125589787154982,
+        "median": 6.514985090499977,
+        "min": 3.2320707970011426,
+        "p95": 11.974802966000425
+      },
+      "final_records": 400,
+      "input_tokens": {
+        "count": 400,
+        "max": 1045.0,
+        "mean": 896.8,
+        "median": 892.0,
+        "min": 811.0,
+        "p95": 954.0
+      },
+      "output_tokens": {
+        "count": 400,
+        "max": 90.0,
+        "mean": 34.1125,
+        "median": 33.0,
+        "min": 17.0,
+        "p95": 52.0
+      },
+      "per_record_latency_sec": {
+        "count": 400,
+        "max": 14.055789443500089,
+        "mean": 3.562794893577491,
+        "median": 3.2574925452499883,
+        "min": 1.6160353985005713,
+        "p95": 5.9874014830002125
+      },
+      "status_counts": {
+        "complete": 400
+      },
+      "token_limit_hits": 0
+    }
   },
   "pilot_batch_sizes": [
     1,
