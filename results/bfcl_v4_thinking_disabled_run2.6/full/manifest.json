@@ -2,7 +2,92 @@
   "attempt_record_count": 0,
   "checkpoint_records_per_commit_target": 100,
   "last_checkpoint_utc": null,
-  "pilot_metrics": null,
+  "pilot_metrics": [
+    {
+      "batch_size": 1,
+      "device": "cuda:0",
+      "elapsed_sec": 1.7486755010000365,
+      "generated_tokens": 2,
+      "peak_memory_gb": 4.873355865478516,
+      "status": "ok",
+      "tokens_per_sec": 1.1437227769567513
+    },
+    {
+      "batch_size": 1,
+      "device": "cuda:1",
+      "elapsed_sec": 1.7443639720000306,
+      "generated_tokens": 2,
+      "peak_memory_gb": 4.873355865478516,
+      "status": "ok",
+      "tokens_per_sec": 1.1465497064278767
+    },
+    {
+      "batch_size": 2,
+      "device": "cuda:0",
+      "elapsed_sec": 8.094797196000002,
+      "generated_tokens": 46,
+      "peak_memory_gb": 5.04380989074707,
+      "status": "ok",
+      "tokens_per_sec": 5.682662441837412
+    },
+    {
+      "batch_size": 2,
+      "device": "cuda:1",
+      "elapsed_sec": 8.568127145000005,
+      "generated_tokens": 46,
+      "peak_memory_gb": 5.04380989074707,
+      "status": "ok",
+      "tokens_per_sec": 5.3687345229048855
+    },
+    {
+      "batch_size": 4,
+      "device": "cuda:0",
+      "elapsed_sec": 23.31753534500001,
+      "generated_tokens": 101,
+      "peak_memory_gb": 8.546290874481201,
+      "status": "ok",
+      "tokens_per_sec": 4.331504102197383
+    },
+    {
+      "batch_size": 4,
+      "device": "cuda:1",
+      "elapsed_sec": 22.611484514999972,
+      "generated_tokens": 101,
+      "peak_memory_gb": 8.546290874481201,
+      "status": "ok",
+      "tokens_per_sec": 4.466756702020107
+    },
+    {
+      "batch_size": 8,
+      "device": "cuda:0",
+      "elapsed_sec": 46.206668346000015,
+      "generated_tokens": 202,
+      "peak_memory_gb": 12.303203105926514,
+      "status": "ok",
+      "tokens_per_sec": 4.371663381731061
+    },
+    {
+      "batch_size": 8,
+      "device": "cuda:1",
+      "elapsed_sec": 43.833278441999994,
+      "generated_tokens": 202,
+      "peak_memory_gb": 12.303203105926514,
+      "status": "ok",
+      "tokens_per_sec": 4.608370789953244
+    },
+    {
+      "batch_size": 12,
+      "device": "cuda:0",
+      "error": "CUDA out of memory. Tried to allocate 1.86 GiB. GPU 0 has a total capacity of 14.56 GiB of which 1.17 GiB is free. Including non-PyTorch memory, this process has 13.39 GiB memory in use. Of the allocated memory 11.09 GiB is allocated by PyTorch, and 2.17 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs",
+      "status": "oom"
+    },
+    {
+      "batch_size": 12,
+      "device": "cuda:1",
+      "error": "CUDA out of memory. Tried to allocate 1.86 GiB. GPU 1 has a total capacity of 14.56 GiB of which 1.17 GiB is free. Including non-PyTorch memory, this process has 13.39 GiB memory in use. Of the allocated memory 11.09 GiB is allocated by PyTorch, and 2.17 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs",
+      "status": "oom"
+    }
+  ],
   "prompt_integrity_summary": {
     "irrelevance": {
       "samples": 240,
@@ -176,7 +261,7 @@
   },
   "run_signature": "029d9aee9d1c9fafab92caabbe3e34b3ce90505b400e4234ed5423ab7827a0c1",
   "schema_version": 2,
-  "selected_batch_size_per_gpu": null,
+  "selected_batch_size_per_gpu": 2,
   "selected_category_counts": {
     "irrelevance": 240,
     "live_irrelevance": 884,
