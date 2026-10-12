@@ -13,6 +13,7 @@
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_1024/shard_00004.jsonl",
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_1024/shard_00005.jsonl",
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_2048/shard_00001.jsonl",
+    "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_2048/shard_00002.jsonl",
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00001.jsonl",
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00002.jsonl",
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00003.jsonl",
@@ -51,10 +52,10 @@
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00036.jsonl",
     "results/bfcl_v4_thinking_enabled_run2.5/full/attempts/stage_512/shard_00037.jsonl"
   ],
-  "checkpointed_attempt_records": 4160,
+  "checkpointed_attempt_records": 4260,
   "checkpointed_stage_attempt_counts": {
     "1024": 419,
-    "2048": 100,
+    "2048": 200,
     "512": 3641
   },
   "created_or_resumed_utc": "2026-10-12T07:37:09.202623+00:00",
@@ -90,7 +91,7 @@
     "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
     "torch": "2.11.0+cu128"
   },
-  "last_updated_utc": "2026-10-12T14:09:54.333973+00:00",
+  "last_updated_utc": "2026-10-12T14:44:03.109671+00:00",
   "lora_adapter": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
   "output_folder_name": "bfcl_v4_thinking_enabled_run2.5",
   "package_versions": {
