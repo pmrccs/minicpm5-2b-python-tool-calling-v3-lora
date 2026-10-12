@@ -1,7 +1,7 @@
 {
-  "attempt_record_count": 1400,
+  "attempt_record_count": 1500,
   "checkpoint_records_per_commit_target": 100,
-  "last_checkpoint_utc": "2026-10-12T17:08:54.418178+00:00",
+  "last_checkpoint_utc": "2026-10-12T17:13:22.912307+00:00",
   "pilot_metrics": [
     {
       "batch_size": 1,
@@ -292,10 +292,11 @@
     "results/bfcl_v4_thinking_disabled_run2.6/full/attempts/stage_512/shard_00011.jsonl",
     "results/bfcl_v4_thinking_disabled_run2.6/full/attempts/stage_512/shard_00012.jsonl",
     "results/bfcl_v4_thinking_disabled_run2.6/full/attempts/stage_512/shard_00013.jsonl",
-    "results/bfcl_v4_thinking_disabled_run2.6/full/attempts/stage_512/shard_00014.jsonl"
+    "results/bfcl_v4_thinking_disabled_run2.6/full/attempts/stage_512/shard_00014.jsonl",
+    "results/bfcl_v4_thinking_disabled_run2.6/full/attempts/stage_512/shard_00015.jsonl"
   ],
   "stage_attempt_counts": {
-    "512": 1400
+    "512": 1500
   },
   "token_limit_stages": [
     512,
