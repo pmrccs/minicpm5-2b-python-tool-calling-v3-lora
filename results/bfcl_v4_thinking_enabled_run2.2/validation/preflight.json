@@ -1,8 +1,0 @@
-{
-  "branch": "main",
-  "repository": "pmrccs/minicpm5-2b-python-tool-calling-v3-lora",
-  "run_path": "results/bfcl_v4_thinking_enabled_run2.2/validation",
-  "status": "github_write_access_verified",
-  "token_secret_name": "GITHUB_TOKEN",
-  "verified_at_utc": "2026-10-11T07:09:42.008777+00:00"
-}
